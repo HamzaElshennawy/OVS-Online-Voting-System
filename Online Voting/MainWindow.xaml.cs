@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace Online_Voting
 {
     /// <summary>
@@ -27,7 +28,22 @@ namespace Online_Voting
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+        private void CloseBTN_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void LoginBTN_Click(object sender, RoutedEventArgs e)
+        {
+
+            LoginScene scene = new LoginScene();
+            scene.Show();
+            Main_Window.Close();
         }
     }
 }

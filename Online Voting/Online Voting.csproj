@@ -9,7 +9,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Close_icon.png" />
+    <None Remove="Icon.png" />
+    <None Remove="ovsAsset 2mdpi.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="EF.RiotApi" Version="2.0.0" />
+    <PackageReference Include="Prism.Wpf" Version="8.1.97" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Close_icon.png" />
+    <Resource Include="Icon.png" />
+    <Resource Include="ovsAsset 2mdpi.png" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿<Window x:Name="Main_Window" x:Class="Online_Voting.MainWindow"
+﻿<Window x:Name="LoginWindow" x:Class="Online_Voting.LoginScene"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -10,14 +10,11 @@
         Width="1050"
         ResizeMode="NoResize" 
         WindowStartupLocation="CenterScreen" 
-        MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        MouseLeftButtonDown="LoginWindow_MouseLeftButtonDown"
         Background="Black" Icon="/Icon.png" 
         WindowStyle="None" SizeToContent="Manual" 
         SnapsToDevicePixels="True"  
-        BorderThickness="0"
-        >
-
-
+        BorderThickness="0">
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -35,40 +32,18 @@
         </Border>
         <Label Content="Online Voting System" 
                HorizontalAlignment="Left" 
-               Margin="30,59,0,0" 
+               Margin="10,10,0,0" 
                VerticalAlignment="Top" 
-               Height="82" 
-               Width="520" Foreground="White" FontSize="54"
+               Height="91" 
+               Width="534" Foreground="White" FontSize="54"
                />
         <Image HorizontalAlignment="Left" 
-               Height="166" Margin="750,28,0,0" 
-               VerticalAlignment="Top" Width="292" 
+               Height="134" Margin="720,0,0,0" 
+               VerticalAlignment="Top" Width="232" 
                Source="/ovsAsset 2mdpi.png"/>
 
 
-        <Button x:Name="RegisterBTN" 
-                Content="Register" 
-                HorizontalAlignment="Left" 
-                Margin="242,485,0,0" 
-                VerticalAlignment="Top" Width="185" 
-                Height="60" Foreground="White" 
-                FontSize="25" HorizontalContentAlignment="Center" 
-                FontFamily="Cascadia Mono ExtraLight">
-            <Button.BorderBrush>
-                <SolidColorBrush Color="#FF707070" Opacity="0.5"/>
-            </Button.BorderBrush>
-            <Button.Background>
-                <SolidColorBrush Color="#FF373535" Opacity="1"/>
-            </Button.Background>
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="20"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-
-
-        <Button x:Name="LoginBTN" Content="Login" Click="LoginBTN_Click" HorizontalAlignment="Left" Margin="605,485,0,0" VerticalAlignment="Top" Width="185" Height="60" Foreground="White" FontSize="25" HorizontalContentAlignment="Center" FontFamily="Cascadia Mono ExtraLight">
+        <Button x:Name="LoginBTN" Content="Login" Margin="432,487,367,0" VerticalAlignment="Top" Height="60" Foreground="White" FontSize="25" HorizontalContentAlignment="Center" FontFamily="Cascadia Mono ExtraLight">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="20"/>
@@ -90,12 +65,31 @@
                 <Image Source="/Close_icon.png" Height="30" Width="36" />
 
             </StackPanel>
-            
+
         </Button>
-        
+
+        <TextBox x:Name="EmailTBox" 
+                 HorizontalAlignment="Left"
+                 Margin="525,271,0,0"
+                 TextWrapping="Wrap" 
+                 VerticalAlignment="Top" 
+                 Width="201" Height="29" FontFamily="Cascadia Mono ExtraLight" Background="#FFF5C1C1"
+                 BorderThickness="1" MaxLength="50" MaxLines="1" IsUndoEnabled="False" FontSize="20" TextAlignment="Left"
+                 />
+        <Label x:Name="Emailbl" Content="E-Mail" HorizontalAlignment="Left" Margin="375,271,0,0" VerticalAlignment="Top" Width="82" Height="29" FontFamily="Cascadia Code SemiLight" FontSize="20"/>
+        <TextBox x:Name="PassTBox" 
+            HorizontalAlignment="Left"
+            Margin="525,320,0,0"
+            TextWrapping="Wrap" 
+            VerticalAlignment="Top" 
+            Width="201" Height="30" FontFamily="Cascadia Mono ExtraLight" Background="#FFF5C1C1"
+            BorderThickness="1" MaxLength="50" MaxLines="1" IsUndoEnabled="False" FontSize="20" TextAlignment="Left"
+                 />
+        <Label x:Name="Passlbl" Content="Password" HorizontalAlignment="Left" Margin="375,320,0,0" VerticalAlignment="Top" Width="121" Height="30" FontFamily="Cascadia Code SemiLight" FontSize="20"/>
+
+
+
 
 
     </Grid>
-
-
 </Window>
