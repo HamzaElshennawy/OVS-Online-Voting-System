@@ -11,10 +11,12 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using FirebaseAdmin.Auth;
 using FireSharp.Config;
-using FireSharp.Interfaces;
 using FireSharp.Response;
+using FireSharp.Interfaces;
+using FireSharp.EventStreaming;
+using FirebaseAdmin.Messaging;
+using Newtonsoft.Json;
 
 namespace Online_Voting
 {
@@ -23,9 +25,9 @@ namespace Online_Voting
     /// </summary>
     public partial class LoginScene : Window
     {
-        //const auth = FirebaseAuth.GetAuth();//getAuth();
+        
         IFirebaseClient client;
-        FirebaseAuth auth;
+        
         
         IFirebaseConfig config = new FirebaseConfig
         {
@@ -34,6 +36,7 @@ namespace Online_Voting
         };
         public LoginScene()
         {
+            
             InitializeComponent();
         }
 
@@ -46,29 +49,35 @@ namespace Online_Voting
         {
             Close();
         }
-        public void CheckForUser()
+        public bool CheckForUser()
         {
-            User user = new User()
-            {
-                UName = "Hamza",
-                UEmail = "elshennawyhamza@gmail.com",
-                UID = "1710874",
-                UPassword = "Hamzamohammed159"
-            };
+            FirebaseResponse response;
             var temp = EmailTBox.Text;
             client = new FireSharp.FirebaseClient(config);
-            MessageBox.Show(user.UEmail);
-            var setter = client.Set("/UserList/" + user.UEmail, user);
-            var respond = client.Get("UserList/" + temp);
-            if (respond.Body != "null")
+            response = client.Get(@"UserList");
+            User user = response.ResultAs<User>();
+            var json = response.Body.ToString();
+            Dictionary<string, User> elist = JsonConvert.DeserializeObject<Dictionary<string, User>>(json);
+            foreach (KeyValuePair<string, User> entry in elist)
             {
-                MessageBox.Show("User exists");
+                User u = new User()
+                {
+                    UID = entry.Key,
+                    UName = entry.Value.UName.ToString(),
+                    UEmail = entry.Value.UEmail.ToString(),
+                    UPassword = entry.Value.UPassword.ToString(),
+                };
+                if(EmailTBox.Text==u.UEmail)
+                {
+                    if(PassTBox.Password.ToString() == u.UPassword)
+                    {
+                        MessageBox.Show("Ok");
+                        return true;
+                    }
+                }
             }
-            if (respond.Body == "null")
-            {
-                MessageBox.Show("Not exist");
-            }
-
+            MessageBox.Show("Not ok");
+            return false;
         }
 
         private void LoginBTN_Click(object sender, RoutedEventArgs e)
