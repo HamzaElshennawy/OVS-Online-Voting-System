@@ -46,7 +46,8 @@
                 VerticalAlignment="Top" Width="243" 
                 Height="48" Foreground="Wheat" 
                 FontSize="25" HorizontalContentAlignment="Center" 
-                FontFamily="Cascadia Mono ExtraLight">
+                FontFamily="Cascadia Mono ExtraLight"
+                Click="RegisterBTN_Click">
 
             <Button.Style>
                 <Style TargetType="Button">

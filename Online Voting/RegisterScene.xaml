@@ -1,4 +1,4 @@
-﻿<Window x:Name="LoginWindow" x:Class="Online_Voting.LoginScene"
+﻿<Window x:Name="RegisterWindow" x:Class="Online_Voting.RegisterScene"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -10,7 +10,7 @@
         Width="1050"
         ResizeMode="NoResize" 
         WindowStartupLocation="CenterScreen" 
-        MouseLeftButtonDown="LoginWindow_MouseLeftButtonDown"
+        MouseLeftButtonDown="RegisterWindow_MouseLeftButtonDown"
         Background="Black" Icon="/Icon.png" 
         WindowStyle="None" SizeToContent="Manual" 
         SnapsToDevicePixels="True"  
@@ -83,10 +83,10 @@
                Source="/ovsAsset 2mdpi.png"/>
 
 
-        <Button x:Name="LoginBTN"
-                Content="Login"
-                Click="LoginBTN_Click"
-                Margin="459,478,327,0"
+        <Button x:Name="RegisterBTN"
+                Content="Register"
+                Click="RegisterBTN_Click"
+                Margin="485,480,301,0"
                 VerticalAlignment="Top" Height="60" 
                 Foreground="Wheat" FontSize="25" 
                 HorizontalContentAlignment="Center" 
@@ -135,23 +135,41 @@
 
         </Button>
 
-        <TextBox x:Name="EmailTBox" Template="{StaticResource TextBoxBaseControlTemplate}"
+        <TextBox x:Name="UserNTbox" Template="{StaticResource TextBoxBaseControlTemplate}"
                  HorizontalAlignment="Left"
-                 Margin="448,300,0,0"
+                 Margin="466,247,0,0"
                  TextWrapping="Wrap" 
                  VerticalAlignment="Top" 
-                 Width="303" Height="28" FontFamily="Gadugi" Background="#FF716C6C"
+                 Width="302" Height="28" FontFamily="Gadugi" Background="#FF716C6C"
                  BorderThickness="1" MaxLength="50" MaxLines="1" IsUndoEnabled="False" FontSize="18" TextAlignment="Left"
                  />
-        <Label x:Name="Emailbl" Content="E-Mail" HorizontalAlignment="Left" Margin="323,299,0,0" VerticalAlignment="Top" Width="86" Height="32" FontFamily="Cascadia Code SemiLight" FontSize="20"/>
+        <Label x:Name="UserNlbl" Content="User Name" HorizontalAlignment="Left" Margin="314,245,0,0" VerticalAlignment="Top" Width="126" Height="32" FontFamily="Cascadia Code SemiLight" FontSize="20"/>
         <PasswordBox x:Name="PassTBox" Template="{StaticResource PassBoxBaseControlTemplate}"
             HorizontalAlignment="Left"
-            Margin="448,348,0,0"
+            Margin="466,295,0,0"
             VerticalAlignment="Top" 
-            Width="303" Height="30" 
+            Width="302" Height="30" 
             Background="#FF716C6C"
             BorderThickness="1" MaxLength="50" FontSize="18"/>
-        <Label x:Name="Passlbl" Content="Password" HorizontalAlignment="Left" Margin="323,346,0,0" VerticalAlignment="Top" Width="112" Height="32" FontFamily="Cascadia Code SemiLight" FontSize="20"/>
+        <Label x:Name="Passlbl" Content="Password" HorizontalAlignment="Left" Margin="314,293,0,0" VerticalAlignment="Top" Width="126" Height="32" FontFamily="Cascadia Code SemiLight" FontSize="20"/>
+        <TextBox x:Name="EmailTBox" Template="{StaticResource TextBoxBaseControlTemplate}"
+            HorizontalAlignment="Left"
+            Margin="466,340,0,0"
+            TextWrapping="Wrap" 
+            VerticalAlignment="Top" 
+            Width="302" Height="28" FontFamily="Gadugi" Background="#FF716C6C"
+            BorderThickness="1" MaxLength="50" MaxLines="1" IsUndoEnabled="False" FontSize="18" TextAlignment="Left"
+                 />
+        <Label x:Name="Emailbl" Content="E-Mail" HorizontalAlignment="Left" Margin="314,338,0,0" VerticalAlignment="Top" Width="126" Height="32" FontFamily="Cascadia Code SemiLight" FontSize="20"/>
+        <TextBox x:Name="UserIDTbox" 
+                Template="{StaticResource TextBoxBaseControlTemplate}"
+                HorizontalAlignment="Left"
+                Margin="466,388,0,0"
+                VerticalAlignment="Top" 
+                Width="302" Height="30" 
+                Background="#FF716C6C"
+                BorderThickness="1" MaxLength="50" FontSize="18"/>
+        <Label x:Name="UserIDlbl" Content="User ID" HorizontalAlignment="Left" Margin="314,386,0,0" VerticalAlignment="Top" Width="126" Height="32" FontFamily="Cascadia Code SemiLight" FontSize="20"/>
 
 
 
