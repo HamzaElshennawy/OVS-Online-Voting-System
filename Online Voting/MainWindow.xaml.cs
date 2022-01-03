@@ -40,7 +40,6 @@ namespace Online_Voting
 
         private void LoginBTN_Click(object sender, RoutedEventArgs e)
         {
-
             LoginScene scene = new LoginScene();
             scene.Show();
             Main_Window.Close();

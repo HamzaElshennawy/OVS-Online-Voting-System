@@ -15,6 +15,46 @@
         WindowStyle="None" SizeToContent="Manual" 
         SnapsToDevicePixels="True"  
         BorderThickness="0">
+    <Window.Resources>
+        <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}">
+            <Border Background="{TemplateBinding Background}" 
+                x:Name="Bd" BorderBrush="Black"
+                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                <ScrollViewer x:Name="PART_ContentHost"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Bd"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="Width" Value="Auto">
+                    <Setter Property="MinWidth" Value="100"/>
+                </Trigger>
+                <Trigger Property="Height" Value="Auto">
+                    <Setter Property="MinHeight" Value="20"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate x:Key="PassBoxBaseControlTemplate" TargetType="{x:Type PasswordBox}">
+            <Border Background="{TemplateBinding Background}" 
+                x:Name="Bd" BorderBrush="Black"
+                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                <ScrollViewer x:Name="PART_ContentHost"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Bd"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="Width" Value="Auto">
+                    <Setter Property="MinWidth" Value="100"/>
+                </Trigger>
+                <Trigger Property="Height" Value="Auto">
+                    <Setter Property="MinHeight" Value="20"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -24,38 +64,65 @@
         <Border >
             <Border.Background>
                 <LinearGradientBrush>
-                    <GradientStop Color="#7be9f6" Offset="0"/>
-                    <GradientStop Color="#f083da" Offset="1"/>
+                    <GradientStop Color="#000" Offset="0"/>
+                    <GradientStop Color="#FFF" Offset="1.3"/>
                 </LinearGradientBrush>
             </Border.Background>
 
         </Border>
         <Label Content="Online Voting System" 
                HorizontalAlignment="Left" 
-               Margin="10,10,0,0" 
+               Margin="296,15,0,0" 
                VerticalAlignment="Top" 
                Height="91" 
                Width="534" Foreground="White" FontSize="54"
                />
         <Image HorizontalAlignment="Left" 
-               Height="134" Margin="720,0,0,0" 
-               VerticalAlignment="Top" Width="232" 
+               Height="116" Margin="470,111,0,0" 
+               VerticalAlignment="Top" Width="191" 
                Source="/ovsAsset 2mdpi.png"/>
 
 
-        <Button x:Name="LoginBTN" Content="Login" Margin="432,487,367,0" VerticalAlignment="Top" Height="60" Foreground="White" FontSize="25" HorizontalContentAlignment="Center" FontFamily="Cascadia Mono ExtraLight">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="20"/>
+        <Button x:Name="LoginBTN"
+                Content="Login"
+                Click="LoginBTN_Click"
+                Margin="459,478,327,0"
+                VerticalAlignment="Top" Height="60" 
+                Foreground="Wheat" FontSize="25" 
+                HorizontalContentAlignment="Center" 
+                FontFamily="Cascadia Mono ExtraLight">
 
+
+
+            <Button.Style>
+
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="#FF373535"/>
+
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF292827"/>
+                        </Trigger>
+                    </Style.Triggers>
                 </Style>
+            </Button.Style>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+
+
             </Button.Resources>
-            <Button.BorderBrush>
-                <SolidColorBrush Color="#FF707070" Opacity="0.5"/>
-            </Button.BorderBrush>
-            <Button.Background>
-                <SolidColorBrush Color="#FF373535" Opacity="1"/>
-            </Button.Background>
+
         </Button>
         <Button x:Name="CloseBTN"
                 Margin="1011,0,0,566"
@@ -68,24 +135,23 @@
 
         </Button>
 
-        <TextBox x:Name="EmailTBox" 
+        <TextBox x:Name="EmailTBox" Template="{StaticResource TextBoxBaseControlTemplate}"
                  HorizontalAlignment="Left"
-                 Margin="525,271,0,0"
+                 Margin="448,300,0,0"
                  TextWrapping="Wrap" 
                  VerticalAlignment="Top" 
-                 Width="201" Height="29" FontFamily="Cascadia Mono ExtraLight" Background="#FFF5C1C1"
-                 BorderThickness="1" MaxLength="50" MaxLines="1" IsUndoEnabled="False" FontSize="20" TextAlignment="Left"
+                 Width="303" Height="28" FontFamily="Gadugi" Background="#FF716C6C"
+                 BorderThickness="1" MaxLength="50" MaxLines="1" IsUndoEnabled="False" FontSize="18" TextAlignment="Left"
                  />
-        <Label x:Name="Emailbl" Content="E-Mail" HorizontalAlignment="Left" Margin="375,271,0,0" VerticalAlignment="Top" Width="82" Height="29" FontFamily="Cascadia Code SemiLight" FontSize="20"/>
-        <TextBox x:Name="PassTBox" 
+        <Label x:Name="Emailbl" Content="E-Mail" HorizontalAlignment="Left" Margin="323,299,0,0" VerticalAlignment="Top" Width="86" Height="28" FontFamily="Cascadia Code SemiLight" FontSize="20"/>
+        <PasswordBox x:Name="PassTBox" Template="{StaticResource PassBoxBaseControlTemplate}"
             HorizontalAlignment="Left"
-            Margin="525,320,0,0"
-            TextWrapping="Wrap" 
+            Margin="448,348,0,0"
             VerticalAlignment="Top" 
-            Width="201" Height="30" FontFamily="Cascadia Mono ExtraLight" Background="#FFF5C1C1"
-            BorderThickness="1" MaxLength="50" MaxLines="1" IsUndoEnabled="False" FontSize="20" TextAlignment="Left"
-                 />
-        <Label x:Name="Passlbl" Content="Password" HorizontalAlignment="Left" Margin="375,320,0,0" VerticalAlignment="Top" Width="121" Height="30" FontFamily="Cascadia Code SemiLight" FontSize="20"/>
+            Width="303" Height="30" 
+            Background="#FF716C6C"
+            BorderThickness="1" MaxLength="50" FontSize="18"/>
+        <Label x:Name="Passlbl" Content="Password" HorizontalAlignment="Left" Margin="323,346,0,0" VerticalAlignment="Top" Width="112" Height="30" FontFamily="Cascadia Code SemiLight" FontSize="20"/>
 
 
 

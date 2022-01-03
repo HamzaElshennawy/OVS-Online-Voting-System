@@ -16,6 +16,8 @@
 
   <ItemGroup>
     <PackageReference Include="EF.RiotApi" Version="2.0.0" />
+    <PackageReference Include="FirebaseAdmin" Version="2.2.0" />
+    <PackageReference Include="FireSharp" Version="2.0.4" />
     <PackageReference Include="Prism.Wpf" Version="8.1.97" />
   </ItemGroup>
 
@@ -23,6 +25,27 @@
     <Resource Include="Close_icon.png" />
     <Resource Include="Icon.png" />
     <Resource Include="ovsAsset 2mdpi.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="LoginScene.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="LoginScene.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MainWindow.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\" />
   </ItemGroup>
 
 </Project>
