@@ -10,8 +10,17 @@
 
   <ItemGroup>
     <None Remove="Close_icon.png" />
+    <None Remove="cursor_24px.png" />
+    <None Remove="expand_32px.png" />
+    <None Remove="home.png" />
     <None Remove="Icon.png" />
+    <None Remove="jhin.png" />
+    <None Remove="leaderboard.png" />
+    <None Remove="Logout.png" />
+    <None Remove="menu.png" />
     <None Remove="ovsAsset 2mdpi.png" />
+    <None Remove="settings.png" />
+    <None Remove="vote.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,8 +32,17 @@
 
   <ItemGroup>
     <Resource Include="Close_icon.png" />
+    <Resource Include="cursor_24px.png" />
+    <Resource Include="expand_32px.png" />
+    <Resource Include="home.png" />
     <Resource Include="Icon.png" />
+    <Resource Include="jhin.png" />
+    <Resource Include="leaderboard.png" />
+    <Resource Include="Logout.png" />
+    <Resource Include="menu.png" />
     <Resource Include="ovsAsset 2mdpi.png" />
+    <Resource Include="settings.png" />
+    <Resource Include="vote.png" />
   </ItemGroup>
 
   <ItemGroup>

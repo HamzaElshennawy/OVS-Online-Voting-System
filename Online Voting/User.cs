@@ -12,5 +12,6 @@ namespace Online_Voting
         public string UEmail { get; set; }
         public string UPassword { get; set; }
         public string UID { get; set; }
+        public bool HadVoted = false;
     }
 }

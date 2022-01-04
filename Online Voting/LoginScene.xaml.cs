@@ -36,8 +36,8 @@ namespace Online_Voting
         };
         public LoginScene()
         {
-            
             InitializeComponent();
+            Incorrectlbl.Visibility = Visibility.Collapsed;
         }
 
         private void LoginWindow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -51,32 +51,43 @@ namespace Online_Voting
         }
         public bool CheckForUser()
         {
-            FirebaseResponse response;
-            var temp = EmailTBox.Text;
-            client = new FireSharp.FirebaseClient(config);
-            response = client.Get(@"UserList");
-            User user = response.ResultAs<User>();
-            var json = response.Body.ToString();
-            Dictionary<string, User> elist = JsonConvert.DeserializeObject<Dictionary<string, User>>(json);
-            foreach (KeyValuePair<string, User> entry in elist)
+            try
             {
-                User u = new User()
+
+
+                FirebaseResponse response;
+                var temp = EmailTBox.Text;
+                client = new FireSharp.FirebaseClient(config);
+                response = client.Get(@"UserList");
+                User user = response.ResultAs<User>();
+                var json = response.Body.ToString();
+                Dictionary<string, User> elist = JsonConvert.DeserializeObject<Dictionary<string, User>>(json);
+                foreach (KeyValuePair<string, User> entry in elist)
                 {
-                    UID = entry.Key,
-                    UName = entry.Value.UName.ToString(),
-                    UEmail = entry.Value.UEmail.ToString(),
-                    UPassword = entry.Value.UPassword.ToString(),
-                };
-                if(EmailTBox.Text==u.UEmail)
-                {
-                    if(PassTBox.Password.ToString() == u.UPassword)
+                    User u = new User()
                     {
-                        MessageBox.Show("Ok");
-                        return true;
+                        UID = entry.Key,
+                        UName = entry.Value.UName.ToString(),
+                        UEmail = entry.Value.UEmail.ToString(),
+                        UPassword = entry.Value.UPassword.ToString(),
+                    };
+                    if (EmailTBox.Text == u.UEmail)
+                    {
+                        if (PassTBox.Password.ToString() == u.UPassword)
+                        {
+                            DashBoardScene db = new DashBoardScene();
+                            db.Show();
+                            this.Close();
+                            return true;
+                        }
                     }
                 }
+                Incorrectlbl.Visibility = Visibility.Visible;
             }
-            MessageBox.Show("Not ok");
+            catch
+            {
+                MessageBox.Show("Check your internet connection.");
+            }
             return false;
         }
 

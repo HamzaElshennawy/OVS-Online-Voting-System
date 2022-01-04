@@ -42,6 +42,7 @@ namespace Online_Voting
         {
             LoginScene Loginscene = new LoginScene();
             Loginscene.Show();
+
             Main_Window.Close();
         }
 

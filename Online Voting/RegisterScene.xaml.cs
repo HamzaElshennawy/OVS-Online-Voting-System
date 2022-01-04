@@ -25,12 +25,12 @@ namespace Online_Voting
     /// </summary>
     public partial class RegisterScene : Window
     {
-        IFirebaseClient client;
         IFirebaseConfig config = new FirebaseConfig
         {
             AuthSecret = "tqRlM0Y9NpkstKBvsPDfVXw6aR2bVeRMn7x6ubTj",
             BasePath = "https://onlinevotingsystem-ovs-default-rtdb.europe-west1.firebasedatabase.app/"
         };
+        IFirebaseClient client;
         public RegisterScene()
         {
             InitializeComponent();
