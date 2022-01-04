@@ -70,19 +70,34 @@ namespace Online_Voting
 
         private void homeBTN_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("clicked");
+            
             Leaderpn.Visibility = Visibility.Collapsed;
             Votepn.Visibility = Visibility.Collapsed;
             Homepn.Visibility = Visibility.Visible;
         }
 
-        private void VoteLV_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        
+        private void VoteBTN_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("clicked");
+            
             Leaderpn.Visibility = Visibility.Collapsed;
             Votepn.Visibility = Visibility.Visible;
             Homepn.Visibility = Visibility.Collapsed;
+        }
 
+        private void LeaderBTN_Click(object sender, RoutedEventArgs e)
+        {
+            
+            Leaderpn.Visibility = Visibility.Visible;
+            Votepn.Visibility = Visibility.Collapsed;
+            Homepn.Visibility = Visibility.Collapsed;
+        }
+
+        private void signoutBTN_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainwindow = new MainWindow();
+            mainwindow.Show();
+            this.Close();
         }
     }
 }

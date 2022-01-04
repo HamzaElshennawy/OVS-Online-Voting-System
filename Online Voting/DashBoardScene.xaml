@@ -344,15 +344,15 @@
 
                             <StackPanel Orientation="Horizontal"
                                         Width="230">
-                                <Button x:Name="homeBTN" Width="52" 
-                                        Click="homeBTN_Click" 
-                                        Background="#FF2E333A"
-                                        BorderThickness="0">
-                                    
-                                    <Button.Style>
 
-                                        <Style TargetType="Button">
-                                            
+                                <Button x:Name="homeBTN" Width="58" 
+                                        Click="homeBTN_Click" 
+                                        Background="Transparent"
+                                        BorderThickness="0" Height="34">
+                                    <Image Source="/home.png" Stretch="None" Width="49" Height="34"/>
+                                    <!--MouseEnter="ListViewItem_MouseEnter"-->
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
                                             <Style.Triggers>
                                                 <Trigger Property="IsMouseOver" Value="True">
                                                     <Setter Property="Background" Value="#FF292827"/>
@@ -360,17 +360,12 @@
                                             </Style.Triggers>
                                         </Style>
                                     </Button.Style>
-                                    <Image Source="/home.png"
-                                       Stretch="None"
-                                       MouseEnter="ListViewItem_MouseEnter"
-                                       Margin="0,0,0,0"/>
-                                </Button>
-                                
-                                <TextBlock Text="Home"
-                                           Margin="4,0,0,0"
-                                           Style="{StaticResource font_style}" Width="105"/>
-                                
 
+                                </Button>
+
+                                <TextBlock Text="Home"
+                                           Margin="12,0,0,0"
+                                           Style="{StaticResource font_style}" Width="71"/>
 
                             </StackPanel>
 
@@ -379,7 +374,7 @@
                             <ListViewItem.ToolTip>
 
                                 <ToolTip x:Name="tt_home"
-                                         Content=" Home"
+                                         Content="Home"
                                          Style="{StaticResource tt_style}"/>
 
                             </ListViewItem.ToolTip>
@@ -392,14 +387,31 @@
                             HorizontalAlignment="Left"
                                       Margin="0,0,0,15"
                                       MouseEnter="ListViewItem_MouseEnter"
-                                      MouseLeftButtonDown="VoteLV_MouseLeftButtonDown">
+                                     >
 
                             <StackPanel Orientation="Horizontal"
                                         Width="230">
 
-                                <Image Source="/vote.png"
+                                
+                                <Button x:Name="VoteBTN" Width="58" 
+                                        Click="VoteBTN_Click"
+                                        Background="Transparent"
+                                        BorderThickness="0" Height="34">
+                                    <Image Source="/vote.png"
                                        Stretch="None"
-                                       Margin="12,0,0,0" />
+                                       Margin="0,0,0,0" />
+                                    <!--MouseEnter="ListViewItem_MouseEnter"-->
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#FF292827"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+
+                                </Button>
 
                                 <TextBlock Text="Vote"
                                            Margin="25,0,0,0"
@@ -428,9 +440,26 @@
                             <StackPanel Orientation="Horizontal"
                                         Width="230">
 
-                                <Image Source="/leaderboard.png"
+                                
+                                <Button x:Name="LeaderBTN" Width="58" 
+                                        Click="LeaderBTN_Click"
+                                        Background="Transparent"
+                                        BorderThickness="0" Height="34">
+                                    <Image Source="/leaderboard.png"
                                        Stretch="None"
-                                       Margin="12,0,0,0"/>
+                                       Margin="0,0,0,0"/>
+                                    <!--MouseEnter="ListViewItem_MouseEnter"-->
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#FF292827"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+
+                                </Button>
 
                                 <TextBlock Text="leaderboard"
                                            Margin="25,0,0,0"
@@ -450,13 +479,7 @@
 
                         </ListViewItem>
 
-                        <!--// Maps //-->
 
-
-
-                        <!--// Settings //-->
-
-                        <!--// Sign Out //-->
 
                         <ListViewItem HorizontalAlignment="Left"
                                       Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
@@ -465,9 +488,26 @@
                             <StackPanel Orientation="Horizontal"
                                         Width="230">
 
-                                <Image Source="/Logout.png"
+                                
+                                <Button x:Name="signoutBTN" Width="58" 
+                                        Click="signoutBTN_Click"
+                                        Background="Transparent"
+                                        BorderThickness="0" Height="34">
+                                    <Image Source="/Logout.png"
                                        Stretch="None"
-                                       Margin="12,0,0,0"/>
+                                       Margin="0,0,0,0"/>
+                                    <!--MouseEnter="ListViewItem_MouseEnter"-->
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#FF292827"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+
+                                </Button>
 
                                 <TextBlock Text="Sign Out"
                                            Margin="25,0,0,0"
@@ -475,7 +515,7 @@
 
                             </StackPanel>
 
-                            <!--// Tooltip //-->
+
 
                             <ListViewItem.ToolTip>
 
