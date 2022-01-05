@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="Home"  Height="600"  Width="1050" ResizeMode="NoResize" Topmost="True" WindowStyle="None" WindowStartupLocation="CenterScreen">
 
-    
-    
-   
+
+
+
 
     <Window.Resources>
         <ImageBrush x:Key="tb_mouse_over" ImageSource="/expand_32px.png"/>
@@ -250,6 +250,75 @@
                         <ImageBrush ImageSource="/Close_icon.png"/>
                     </Button.Background>
                 </Button>
+                <StackPanel x:Name="Homepn" Margin="68,0,0,-2" Visibility="Visible" Grid.Row="2" Grid.ColumnSpan="3">
+                    <ToggleButton x:Name="VotePhotoBTN"                                      
+                                      Checked="VoteBTN_Click"
+                                      HorizontalAlignment="Left"
+                                      Margin="180,140,0,0"
+                                      Height="176"
+                                      Width="185"
+                                      BorderThickness="0"
+                          Style="{StaticResource tb_vote}"
+                                       >
+                        <ToggleButton.Background>
+                            <ImageBrush ImageSource="/votePhoto.jpg"
+                                            Stretch="Fill"/>
+                        </ToggleButton.Background>
+                    </ToggleButton>
+                    <TextBlock x:Name="home_Votelbl"  
+                                    Grid.Column="0"
+                                    Margin="235,10,0,0"
+                                    Text="Vote"
+                                    Foreground="White"
+                                    FontSize="35"
+                                    Background="Transparent"
+                                    HorizontalAlignment="Left"
+                                    Style="{StaticResource font_style}" Height="64" Width="163">
+                        <TextBlock.Effect>
+                            <DropShadowEffect  BlurRadius="10"
+                                                   ShadowDepth="1"
+                                                   Direction="-90"
+                                                   Color="White"/>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                    <ToggleButton x:Name="leaderPhotoBTN"                                      
+                                      Checked="LeaderBTN_Click"
+                                      Height="215"
+                                      Width="244"
+                                      BorderThickness="0" HorizontalAlignment="Right" Margin="0,-320.4,170,0"
+                                      Style="{StaticResource tb_leader}"
+                                       >
+                        <ToggleButton.Background>
+                            <ImageBrush ImageSource="/leader.png"
+                                            Stretch="Fill" Opacity="1.5"/>
+                        </ToggleButton.Background>
+
+                    </ToggleButton>
+                    <TextBlock x:Name="home_Leaderlbl"  
+                                    Grid.Column="0"
+                                    Margin="0,-60,75,0"
+                                    Text="LeaderBoard"
+                                    Foreground="White"
+                                    FontSize="35"
+                                    Background="Transparent"
+                                    HorizontalAlignment="Right"
+                                    Style="{StaticResource font_style}" Height="52" Width="309">
+                        <TextBlock.Effect>
+                            <DropShadowEffect  BlurRadius="10"
+                                                   ShadowDepth="1"
+                                                   Direction="-90"
+                                                   Color="White"/>
+                        </TextBlock.Effect>
+                    </TextBlock>
+
+                    <!--<Image x:Name="Leader_Photo" 
+                   Height="329" Width="364" 
+                   Source="/leader.png" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Margin="0,-300,50,0"/>-->
+                </StackPanel>
+                <StackPanel x:Name="Votepn" Margin="68,40,0,0" Visibility="Visible"/>
+                <StackPanel x:Name="Leaderpn" Margin="68,40,0,0" Visibility="Hidden">
+                    <Button x:Name="test3btn" Width="124" Height="50" Background="Blue" Content="Leaderboard scene" Foreground="White"/>
+                </StackPanel>
             </Grid>
             <Grid   x:Name="nav_pnl"
                     HorizontalAlignment="Left"
@@ -460,7 +529,7 @@
                                       Height="30"
                                       Width="30"
                                       BorderThickness="0"
-                                      Style="{StaticResource tb_vote}" >
+                                      Style="{StaticResource tb_signout}" >
                                     <ToggleButton.Background>
                                         <ImageBrush ImageSource="/Logout.png"
                                             Stretch="None"/>
@@ -528,80 +597,8 @@
                 </StackPanel>
             </Grid>
         </Grid>
-        
-        <StackPanel/>
-        <StackPanel x:Name="Homepn" Margin="68,40,0,0">
-            <ToggleButton x:Name="VotePhotoBTN"                                      
-                                      Checked="VoteBTN_Click"
-                                      HorizontalAlignment="Left"
-                                      Margin="90,100,0,0"
-                                      Height="306"
-                                      Width="307"
-                                      BorderThickness="0"
-                          Style="{StaticResource tb_vote}"
-                                       >
-                <ToggleButton.Background>
-                    <ImageBrush ImageSource="/votePhoto.jpg"
-                                            Stretch="Fill"/>
-                </ToggleButton.Background>
-            </ToggleButton>
-            <TextBlock  
-                                    Grid.Column="0"
-                                    Margin="105,20,0,0"
-                                    Text="Vote"
-                                    Foreground="White"
-                                    FontSize="70"
-                                    Background="Transparent"
-                                    HorizontalAlignment="Left"
-                                    VerticalAlignment="Center"
-                                    Style="{StaticResource font_style}">
-                <TextBlock.Effect>
-                    <DropShadowEffect  BlurRadius="10"
-                                                   ShadowDepth="1"
-                                                   Direction="-90"
-                                                   Color="White"/>
-                </TextBlock.Effect>
-            </TextBlock>
-            <ToggleButton x:Name="leaderPhotoBTN"                                      
-                                      Checked="LeaderBTN_Click"
-                                      Height="333"
-                                      Width="378"
-                                      BorderThickness="0" HorizontalAlignment="Right" Margin="0,-500.4,70,0"
-                                      Style="{StaticResource tb_leader}"
-                                       >
-                <ToggleButton.Background>
-                    <ImageBrush ImageSource="/leader.png"
-                                            Stretch="Fill"/>
-                </ToggleButton.Background>
-                
-            </ToggleButton>
-            <TextBlock  
-                                    Grid.Column="0"
-                                    Margin="0,-85,50,0"
-                                    Text="LeaderBoard"
-                                    Foreground="White"
-                                    FontSize="70"
-                                    Background="Transparent"
-                                    HorizontalAlignment="Right"
-                                    VerticalAlignment="Top"
-                                    Style="{StaticResource font_style}">
-                <TextBlock.Effect>
-                    <DropShadowEffect  BlurRadius="10"
-                                                   ShadowDepth="1"
-                                                   Direction="-90"
-                                                   Color="White"/>
-                </TextBlock.Effect>
-            </TextBlock>
 
-            <!--<Image x:Name="Leader_Photo" 
-                   Height="329" Width="364" 
-                   Source="/leader.png" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Margin="0,-300,50,0"/>-->
-        </StackPanel>
-        <StackPanel x:Name="Votepn" Margin="68,40,0,0" Visibility="Hidden">
-            <Button x:Name="test2btn" Width="150" Height="50" Background="Red" Content="vote scene" Foreground="White"/>
-        </StackPanel>
-        <StackPanel x:Name="Leaderpn" Margin="68,40,0,0" Visibility="Hidden">
-            <Button x:Name="test3btn" Width="124" Height="50" Background="Blue" Content="Leaderboard scene" Foreground="White"/>
-        </StackPanel>
+        <StackPanel/>
+
     </Grid>
 </Window>

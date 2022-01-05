@@ -52,11 +52,17 @@ namespace Online_Voting
         private void Tg_Btn_Unchecked(object sender, RoutedEventArgs e)
         {
             img_bg.Opacity = 1;
+            leaderPhotoBTN.Opacity = 2;
+            home_Leaderlbl.Opacity = 1;
+            home_Votelbl.Opacity = 1;
         }
 
         private void Tg_Btn_Checked(object sender, RoutedEventArgs e)
         {
             img_bg.Opacity = 0.3;
+            Homepn.Opacity = 0.9;
+            home_Leaderlbl.Opacity = 0.3;
+            home_Votelbl.Opacity = 0.3;
         }
 
         private void BG_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
