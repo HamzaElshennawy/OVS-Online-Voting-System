@@ -18,8 +18,27 @@
         BorderThickness="0"
         >
 
-    
 
+    <Window.Resources>
+        <Style x:Key="font_style" TargetType="Label">
+
+            <Setter Property="FontFamily"
+                    Value="fonts/Roboto-Light.ttf #Roboto"/>
+
+            <Setter Property="VerticalAlignment"
+                    Value="Center"/>
+
+            <Setter Property="HorizontalAlignment"
+                    Value="Left"/>
+
+            <Setter Property="Foreground"
+                    Value="White"/>
+
+            <Setter Property="FontSize"
+                    Value="20"/>
+
+        </Style>
+    </Window.Resources>
 
 
     <Grid>
@@ -76,6 +95,12 @@
 
 
             </Button.Resources>
+            <Button.Effect>
+                <DropShadowEffect  BlurRadius="10"
+                                                   ShadowDepth="1"
+                                                   Direction="-90"
+                                                   Color="White"/>
+            </Button.Effect>
 
         </Button>
 
@@ -121,7 +146,12 @@
 
 
             </Button.Resources>
-
+            <Button.Effect>
+                <DropShadowEffect  BlurRadius="10"
+                                                   ShadowDepth="1"
+                                                   Direction="-90"
+                                                   Color="White"/>
+            </Button.Effect>
         </Button>
         <Image Source="/Close_icon.png" Margin="1010,0,2,566" />
         <Button x:Name="CloseBTN"
@@ -158,7 +188,15 @@
             VerticalAlignment="Top" 
             Height="91" 
             Width="534" Foreground="White" FontSize="54"
-               />
+               Style="{StaticResource font_style}"
+               >
+            <Label.Effect>
+                <DropShadowEffect  BlurRadius="10"
+                                                   ShadowDepth="1"
+                                                   Direction="-90"
+                                                   Color="White"/>
+            </Label.Effect>
+        </Label>
         <Image HorizontalAlignment="Left" 
             Height="116" Margin="470,111,0,0" 
             VerticalAlignment="Top" Width="191" 

@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Prism.Services.Dialogs;
+
+
 
 namespace Online_Voting
 {
@@ -22,6 +25,9 @@ namespace Online_Voting
         public DashBoardScene()
         {
             InitializeComponent();
+            Leaderpn.Visibility = Visibility.Collapsed;
+            Votepn.Visibility = Visibility.Collapsed;
+            Homepn.Visibility = Visibility.Visible;
         }
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
         {

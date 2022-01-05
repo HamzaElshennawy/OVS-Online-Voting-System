@@ -76,7 +76,14 @@
                VerticalAlignment="Top" 
                Height="91" 
                Width="534" Foreground="White" FontSize="54"
-               />
+               >
+            <Label.Effect>
+                <DropShadowEffect  BlurRadius="10"
+                                                   ShadowDepth="1"
+                                                   Direction="-90"
+                                                   Color="White"/>
+            </Label.Effect>
+        </Label>
         <Image HorizontalAlignment="Left" 
                Height="116" Margin="470,111,0,0" 
                VerticalAlignment="Top" Width="191" 
@@ -122,6 +129,12 @@
 
 
             </Button.Resources>
+            <Button.Effect>
+                <DropShadowEffect  BlurRadius="10"
+                                                   ShadowDepth="1"
+                                                   Direction="-90"
+                                                   Color="White"/>
+            </Button.Effect>
 
         </Button>
         <Button x:Name="CloseBTN"
@@ -132,6 +145,7 @@
                 <Image Source="/Close_icon.png" Height="30" Width="36" />
 
             </StackPanel>
+            
 
         </Button>
 
@@ -142,16 +156,44 @@
                  VerticalAlignment="Top" 
                  Width="302" Height="28" FontFamily="Gadugi" Background="#FF716C6C"
                  BorderThickness="1" MaxLength="50" MaxLines="1" IsUndoEnabled="False" FontSize="18" TextAlignment="Left"
-                 />
-        <Label x:Name="UserNlbl" Content="User Name" HorizontalAlignment="Left" Margin="314,245,0,0" VerticalAlignment="Top" Width="126" Height="32" FontFamily="Cascadia Code SemiLight" FontSize="20"/>
+                 >
+            <TextBox.Effect>
+                <DropShadowEffect  BlurRadius="10"
+                                                   ShadowDepth="1"
+                                                   Direction="-90"
+                                                   Color="White"/>
+            </TextBox.Effect>
+        </TextBox>
+        <Label x:Name="UserNlbl" Content="User Name" HorizontalAlignment="Left" Margin="314,245,0,0" VerticalAlignment="Top" Width="126" Height="32" FontFamily="Cascadia Code SemiLight" FontSize="20">
+            <Label.Effect>
+                <DropShadowEffect  BlurRadius="10"
+                                                   ShadowDepth="1"
+                                                   Direction="-90"
+                                                   Color="White"/>
+            </Label.Effect>
+        </Label>
         <PasswordBox x:Name="PassTBox" Template="{StaticResource PassBoxBaseControlTemplate}"
             HorizontalAlignment="Left"
             Margin="466,295,0,0"
             VerticalAlignment="Top" 
             Width="302" Height="30" 
             Background="#FF716C6C"
-            BorderThickness="1" MaxLength="50" FontSize="18"/>
-        <Label x:Name="Passlbl" Content="Password" HorizontalAlignment="Left" Margin="314,293,0,0" VerticalAlignment="Top" Width="126" Height="32" FontFamily="Cascadia Code SemiLight" FontSize="20"/>
+            BorderThickness="1" MaxLength="50" FontSize="18">
+            <PasswordBox.Effect>
+                <DropShadowEffect  BlurRadius="10"
+                                                   ShadowDepth="1"
+                                                   Direction="-90"
+                                                   Color="White"/>
+            </PasswordBox.Effect>
+        </PasswordBox>
+        <Label x:Name="Passlbl" Content="Password" HorizontalAlignment="Left" Margin="314,293,0,0" VerticalAlignment="Top" Width="126" Height="32" FontFamily="Cascadia Code SemiLight" FontSize="20">
+            <Label.Effect>
+                <DropShadowEffect  BlurRadius="10"
+                                                   ShadowDepth="1"
+                                                   Direction="-90"
+                                                   Color="White"/>
+            </Label.Effect>
+        </Label>
         <TextBox x:Name="EmailTBox" Template="{StaticResource TextBoxBaseControlTemplate}"
             HorizontalAlignment="Left"
             Margin="466,340,0,0"
@@ -159,8 +201,22 @@
             VerticalAlignment="Top" 
             Width="302" Height="28" FontFamily="Gadugi" Background="#FF716C6C"
             BorderThickness="1" MaxLength="50" MaxLines="1" IsUndoEnabled="False" FontSize="18" TextAlignment="Left"
-                 />
-        <Label x:Name="Emailbl" Content="E-Mail" HorizontalAlignment="Left" Margin="314,338,0,0" VerticalAlignment="Top" Width="126" Height="32" FontFamily="Cascadia Code SemiLight" FontSize="20"/>
+                 >
+            <TextBox.Effect>
+                <DropShadowEffect  BlurRadius="10"
+                                                   ShadowDepth="1"
+                                                   Direction="-90"
+                                                   Color="White"/>
+            </TextBox.Effect>
+        </TextBox>
+        <Label x:Name="Emailbl" Content="E-Mail" HorizontalAlignment="Left" Margin="314,338,0,0" VerticalAlignment="Top" Width="126" Height="32" FontFamily="Cascadia Code SemiLight" FontSize="20">
+            <Label.Effect>
+                <DropShadowEffect  BlurRadius="10"
+                                                   ShadowDepth="1"
+                                                   Direction="-90"
+                                                   Color="White"/>
+            </Label.Effect>
+        </Label>
         <TextBox x:Name="UserIDTbox" 
                 Template="{StaticResource TextBoxBaseControlTemplate}"
                 HorizontalAlignment="Left"
@@ -168,8 +224,22 @@
                 VerticalAlignment="Top" 
                 Width="302" Height="30" 
                 Background="#FF716C6C"
-                BorderThickness="1" MaxLength="50" FontSize="18"/>
-        <Label x:Name="UserIDlbl" Content="User ID" HorizontalAlignment="Left" Margin="314,386,0,0" VerticalAlignment="Top" Width="126" Height="32" FontFamily="Cascadia Code SemiLight" FontSize="20"/>
+                BorderThickness="1" MaxLength="50" FontSize="18">
+            <TextBox.Effect>
+                <DropShadowEffect  BlurRadius="10"
+                                                   ShadowDepth="1"
+                                                   Direction="-90"
+                                                   Color="White"/>
+            </TextBox.Effect>
+        </TextBox>
+        <Label x:Name="UserIDlbl" Content="User ID" HorizontalAlignment="Left" Margin="314,386,0,0" VerticalAlignment="Top" Width="126" Height="32" FontFamily="Cascadia Code SemiLight" FontSize="20">
+            <Label.Effect>
+                <DropShadowEffect  BlurRadius="10"
+                                                   ShadowDepth="1"
+                                                   Direction="-90"
+                                                   Color="White"/>
+            </Label.Effect>
+        </Label>
 
 
 
