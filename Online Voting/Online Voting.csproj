@@ -15,12 +15,15 @@
     <None Remove="home.png" />
     <None Remove="Icon.png" />
     <None Remove="jhin.png" />
+    <None Remove="leader.png" />
     <None Remove="leaderboard.png" />
+    <None Remove="leaderPhoto.jpg" />
     <None Remove="Logout.png" />
     <None Remove="menu.png" />
     <None Remove="ovsAsset 2mdpi.png" />
     <None Remove="settings.png" />
     <None Remove="vote.png" />
+    <None Remove="votePhoto.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,12 +40,15 @@
     <Resource Include="home.png" />
     <Resource Include="Icon.png" />
     <Resource Include="jhin.png" />
+    <Resource Include="leader.png" />
     <Resource Include="leaderboard.png" />
+    <Resource Include="leaderPhoto.jpg" />
     <Resource Include="Logout.png" />
     <Resource Include="menu.png" />
     <Resource Include="ovsAsset 2mdpi.png" />
     <Resource Include="settings.png" />
     <Resource Include="vote.png" />
+    <Resource Include="votePhoto.jpg" />
   </ItemGroup>
 
   <ItemGroup>

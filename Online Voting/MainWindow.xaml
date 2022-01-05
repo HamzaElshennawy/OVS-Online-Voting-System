@@ -18,7 +18,7 @@
         BorderThickness="0"
         >
 
-
+    
     <Window.Resources>
         <Style x:Key="font_style" TargetType="Label">
 
