@@ -27,8 +27,6 @@ namespace Online_Voting
     {
         
         IFirebaseClient client;
-        
-        
         IFirebaseConfig config = new FirebaseConfig
         {
             AuthSecret= "tqRlM0Y9NpkstKBvsPDfVXw6aR2bVeRMn7x6ubTj",
@@ -68,15 +66,20 @@ namespace Online_Voting
                         UName = entry.Value.UName.ToString(),
                         UEmail = entry.Value.UEmail.ToString(),
                         UPassword = entry.Value.UPassword.ToString(),
+                        HadVoted = entry.Value.HadVoted,
+                        isAdmin = entry.Value.isAdmin
                     };
                     if (EmailTBox.Text == u.UEmail)
                     {
                         if (PassTBox.Password.ToString() == u.UPassword)
                         {
                             DashBoardScene db = new DashBoardScene();
+                            response = client.Delete("CurrentUser");
+                            response = client.Set("CurrentUser/" + u.UID, u);
                             db.CurrentUserlbl.Content = u.UName.ToString();
                             db.Show();
                             this.Close();
+                            
                             return true;
                         }
                     }
@@ -87,6 +90,8 @@ namespace Online_Voting
             {
                 MessageBox.Show("Check your internet connection.");
             }
+            
+            
             return false;
         }
 

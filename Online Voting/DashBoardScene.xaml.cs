@@ -39,6 +39,16 @@ namespace Online_Voting
             Leaderpn.Visibility = Visibility.Collapsed;
             Votepn.Visibility = Visibility.Collapsed;
             Homepn.Visibility = Visibility.Visible;
+            if(!CheckIfAdmin())
+            {
+                AddCadidateBTN.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                AddCadidateBTN.Visibility = Visibility.Visible;
+            }
+            //MessageBox.Show(CurrentUserlbl.Content.ToString());
+            
         }
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -103,7 +113,7 @@ namespace Online_Voting
             }
             else
             {
-                Leaderpn.Visibility = Visibility.Collapsed;1
+                Leaderpn.Visibility = Visibility.Collapsed;
                 Votepn.Visibility = Visibility.Visible;
                 Homepn.Visibility = Visibility.Collapsed;
             }
@@ -145,9 +155,9 @@ namespace Online_Voting
                     };
                     if (temp == u.UName)
                     {
-                        if (u.HadVoted)
+                        if (u.HadVoted==true)
                         {
-                            return false;
+                            return true;
                         }
                     }
                 }
@@ -156,7 +166,65 @@ namespace Online_Voting
             {
                 MessageBox.Show("Check your internet connection.");
             }
-            return true;
+            return false;
+        }
+        public void AddCadidate()
+        {
+            FirebaseResponse response2;
+            Candidate candidate = new Candidate()
+            {
+                CID = "1234",
+                CName = "Ahmed",
+                CVotes = 0
+            };
+            client = new FireSharp.FirebaseClient(config);
+            response2 = client.Set("CandidateList/" + candidate.CID.ToString(), candidate);
+            MessageBox.Show(response2.Body);
+        }
+        public bool CheckIfAdmin()
+        {
+            User u = new User();
+            try
+            {
+                FirebaseResponse response;
+                
+                client = new FireSharp.FirebaseClient(config);
+                response = client.Get(@"CurrentUser");
+                User user = response.ResultAs<User>();
+                var json = response.Body.ToString();
+                Dictionary<string, User> elist = JsonConvert.DeserializeObject<Dictionary<string, User>>(json);
+                foreach (KeyValuePair<string, User> entry in elist)
+                {
+                    u = new User()
+                    {
+                        UID = entry.Key,
+                        UName = entry.Value.UName.ToString(),
+                        UEmail = entry.Value.UEmail.ToString(),
+                        UPassword = entry.Value.UPassword.ToString(),
+                        isAdmin=entry.Value.isAdmin,
+                        HadVoted=entry.Value.HadVoted
+                        
+                    };
+                    
+                    if(u.isAdmin == true)
+                    {
+                        
+                        return true;
+                    }
+                }  
+            }
+            catch
+            {
+                MessageBox.Show(u.UID, "UserID");
+                MessageBox.Show("Check your internet connection.....");
+            }
+            
+            return false;
+        }
+
+        private void AddCadidateBTN_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

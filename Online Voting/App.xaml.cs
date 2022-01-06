@@ -13,5 +13,6 @@ namespace Online_Voting
     /// </summary>
     public partial class App : Application
     {
+        public string CurrentUser;
     }
 }
