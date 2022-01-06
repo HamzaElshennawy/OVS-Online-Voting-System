@@ -12,7 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Prism.Services.Dialogs;
-
+using FireSharp.Config;
+using FireSharp.Response;
+using FireSharp.Interfaces;
+using FireSharp.EventStreaming;
+using FirebaseAdmin.Messaging;
+using Newtonsoft.Json;
 
 
 namespace Online_Voting
@@ -22,6 +27,12 @@ namespace Online_Voting
     /// </summary>
     public partial class DashBoardScene : Window
     {
+        IFirebaseClient client;
+        IFirebaseConfig config = new FirebaseConfig
+        {
+            AuthSecret = "tqRlM0Y9NpkstKBvsPDfVXw6aR2bVeRMn7x6ubTj",
+            BasePath = "https://onlinevotingsystem-ovs-default-rtdb.europe-west1.firebasedatabase.app/"
+        };
         public DashBoardScene()
         {
             InitializeComponent();
@@ -86,10 +97,16 @@ namespace Online_Voting
         
         private void VoteBTN_Click(object sender, RoutedEventArgs e)
         {
-               
-            Leaderpn.Visibility = Visibility.Collapsed;
-            Votepn.Visibility = Visibility.Visible;
-            Homepn.Visibility = Visibility.Collapsed;
+            if(CheckForUserIfVoted())
+            {
+                MessageBox.Show("Sorry you had voted before","Waring!!");
+            }
+            else
+            {
+                Leaderpn.Visibility = Visibility.Collapsed;1
+                Votepn.Visibility = Visibility.Visible;
+                Homepn.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void LeaderBTN_Click(object sender, RoutedEventArgs e)
@@ -106,7 +123,40 @@ namespace Online_Voting
             mainwindow.Show();
             this.Close();
         }
-        
-
+        public bool CheckForUserIfVoted()
+        {
+            try
+            {
+                FirebaseResponse response;
+                var temp = CurrentUserlbl.Content;
+                client = new FireSharp.FirebaseClient(config);
+                response = client.Get(@"UserList");
+                User user = response.ResultAs<User>();
+                var json = response.Body.ToString();
+                Dictionary<string, User> elist = JsonConvert.DeserializeObject<Dictionary<string, User>>(json);
+                foreach (KeyValuePair<string, User> entry in elist)
+                {
+                    User u = new User()
+                    {
+                        UID = entry.Key,
+                        UName = entry.Value.UName.ToString(),
+                        UEmail = entry.Value.UEmail.ToString(),
+                        UPassword = entry.Value.UPassword.ToString(),
+                    };
+                    if (temp == u.UName)
+                    {
+                        if (u.HadVoted)
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Check your internet connection.");
+            }
+            return true;
+        }
     }
 }

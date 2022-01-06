@@ -86,6 +86,7 @@ namespace Online_Voting
                 };
                 if (EmailTBox.Text == u.UEmail)
                 {
+
                     return true;
                 }
             }
