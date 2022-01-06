@@ -53,8 +53,6 @@ namespace Online_Voting
         {
             try
             {
-
-
                 FirebaseResponse response;
                 var temp = EmailTBox.Text;
                 client = new FireSharp.FirebaseClient(config);
@@ -76,6 +74,7 @@ namespace Online_Voting
                         if (PassTBox.Password.ToString() == u.UPassword)
                         {
                             DashBoardScene db = new DashBoardScene();
+                            db.CurrentUserlbl.Content = u.UName.ToString();
                             db.Show();
                             this.Close();
                             return true;
@@ -95,5 +94,6 @@ namespace Online_Voting
         {
             CheckForUser();
         }
+        
     }
 }

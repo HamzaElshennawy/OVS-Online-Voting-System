@@ -75,11 +75,6 @@ namespace Online_Voting
             Close();
         }
 
-        private void ListViewItem_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
         private void homeBTN_Click(object sender, RoutedEventArgs e)
         {
             
@@ -91,7 +86,7 @@ namespace Online_Voting
         
         private void VoteBTN_Click(object sender, RoutedEventArgs e)
         {
-            
+               
             Leaderpn.Visibility = Visibility.Collapsed;
             Votepn.Visibility = Visibility.Visible;
             Homepn.Visibility = Visibility.Collapsed;
@@ -111,5 +106,7 @@ namespace Online_Voting
             mainwindow.Show();
             this.Close();
         }
+        
+
     }
 }

@@ -250,7 +250,7 @@
                         <ImageBrush ImageSource="/Close_icon.png"/>
                     </Button.Background>
                 </Button>
-                <StackPanel x:Name="Homepn" Margin="68,0,0,-2" Visibility="Visible" Grid.Row="2" Grid.ColumnSpan="3">
+                <StackPanel x:Name="Homepn" Margin="68,0,0,-2" Visibility="Hidden" Grid.Row="2" Grid.ColumnSpan="3">
                     <ToggleButton x:Name="VotePhotoBTN"                                      
                                       Checked="VoteBTN_Click"
                                       HorizontalAlignment="Left"
@@ -315,10 +315,19 @@
                    Height="329" Width="364" 
                    Source="/leader.png" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Margin="0,-300,50,0"/>-->
                 </StackPanel>
-                <StackPanel x:Name="Votepn" Margin="68,40,0,0" Visibility="Visible"/>
+                <StackPanel x:Name="Votepn" Margin="68,0,0,-2" Visibility="Visible" Grid.RowSpan="2" Grid.Row="1" Grid.ColumnSpan="2">
+
+
+
+
+
+
+
+                </StackPanel>
                 <StackPanel x:Name="Leaderpn" Margin="68,40,0,0" Visibility="Hidden">
                     <Button x:Name="test3btn" Width="124" Height="50" Background="Blue" Content="Leaderboard scene" Foreground="White"/>
                 </StackPanel>
+                <Label x:Name="CurrentUserlbl" HorizontalAlignment="Left" Margin="851,0,0,0" VerticalAlignment="Center" Width="154" Grid.ColumnSpan="2" FontSize="15" FontFamily="Cascadia Mono Light"/>
             </Grid>
             <Grid   x:Name="nav_pnl"
                     HorizontalAlignment="Left"
