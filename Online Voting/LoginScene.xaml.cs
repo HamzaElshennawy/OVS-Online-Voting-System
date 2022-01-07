@@ -79,7 +79,6 @@ namespace Online_Voting
                             db.CurrentUserlbl.Content = u.UName.ToString();
                             db.Show();
                             this.Close();
-                            
                             return true;
                         }
                     }

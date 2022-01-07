@@ -33,22 +33,13 @@ namespace Online_Voting
             AuthSecret = "tqRlM0Y9NpkstKBvsPDfVXw6aR2bVeRMn7x6ubTj",
             BasePath = "https://onlinevotingsystem-ovs-default-rtdb.europe-west1.firebasedatabase.app/"
         };
+        User currentUser;
         public DashBoardScene()
         {
             InitializeComponent();
             Leaderpn.Visibility = Visibility.Collapsed;
             Votepn.Visibility = Visibility.Collapsed;
             Homepn.Visibility = Visibility.Visible;
-            if(!CheckIfAdmin())
-            {
-                AddCadidateBTN.Visibility = Visibility.Hidden;
-            }
-            else
-            {
-                AddCadidateBTN.Visibility = Visibility.Visible;
-            }
-            //MessageBox.Show(CurrentUserlbl.Content.ToString());
-            
         }
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -107,15 +98,23 @@ namespace Online_Voting
         
         private void VoteBTN_Click(object sender, RoutedEventArgs e)
         {
-            if(CheckForUserIfVoted())
-            {
-                MessageBox.Show("Sorry you had voted before","Waring!!");
-            }
-            else
+            if(CheckIfAdmin())
             {
                 Leaderpn.Visibility = Visibility.Collapsed;
                 Votepn.Visibility = Visibility.Visible;
                 Homepn.Visibility = Visibility.Collapsed;
+            }
+            if(!CheckIfAdmin())
+            {
+                if(CheckForUserIfVoted())
+                    MessageBox.Show("Sorry you had voted before", "Waring!!");
+                else
+                {
+                    Leaderpn.Visibility = Visibility.Collapsed;
+                    Votepn.Visibility = Visibility.Visible;
+                    Homepn.Visibility = Visibility.Collapsed;
+                    AddCadidateBTN.Visibility = Visibility.Collapsed;
+                }
             }
         }
 
@@ -140,25 +139,24 @@ namespace Online_Voting
                 FirebaseResponse response;
                 var temp = CurrentUserlbl.Content;
                 client = new FireSharp.FirebaseClient(config);
-                response = client.Get(@"UserList");
+                response = client.Get(@"CurrentUser");
                 User user = response.ResultAs<User>();
                 var json = response.Body.ToString();
                 Dictionary<string, User> elist = JsonConvert.DeserializeObject<Dictionary<string, User>>(json);
                 foreach (KeyValuePair<string, User> entry in elist)
                 {
-                    User u = new User()
+                    currentUser = new User()
                     {
                         UID = entry.Key,
                         UName = entry.Value.UName.ToString(),
                         UEmail = entry.Value.UEmail.ToString(),
                         UPassword = entry.Value.UPassword.ToString(),
+                        HadVoted = entry.Value.HadVoted,
+                        isAdmin = entry.Value.isAdmin
                     };
-                    if (temp == u.UName)
+                    if (currentUser.HadVoted)
                     {
-                        if (u.HadVoted==true)
-                        {
-                            return true;
-                        }
+                        return true;
                     }
                 }
             }
@@ -183,11 +181,10 @@ namespace Online_Voting
         }
         public bool CheckIfAdmin()
         {
-            User u = new User();
+            
             try
             {
-                FirebaseResponse response;
-                
+                FirebaseResponse response;  
                 client = new FireSharp.FirebaseClient(config);
                 response = client.Get(@"CurrentUser");
                 User user = response.ResultAs<User>();
@@ -195,36 +192,35 @@ namespace Online_Voting
                 Dictionary<string, User> elist = JsonConvert.DeserializeObject<Dictionary<string, User>>(json);
                 foreach (KeyValuePair<string, User> entry in elist)
                 {
-                    u = new User()
+                    currentUser = new User()
                     {
                         UID = entry.Key,
                         UName = entry.Value.UName.ToString(),
                         UEmail = entry.Value.UEmail.ToString(),
                         UPassword = entry.Value.UPassword.ToString(),
                         isAdmin=entry.Value.isAdmin,
-                        HadVoted=entry.Value.HadVoted
-                        
-                    };
-                    
-                    if(u.isAdmin == true)
+                        HadVoted=entry.Value.HadVoted                        
+                    };                    
+                    if(currentUser.isAdmin == true)
                     {
-                        
                         return true;
                     }
                 }  
             }
             catch
-            {
-                MessageBox.Show(u.UID, "UserID");
+            {                
                 MessageBox.Show("Check your internet connection.....");
-            }
-            
+            }           
             return false;
         }
-
         private void AddCadidateBTN_Click(object sender, RoutedEventArgs e)
         {
-
+            AddCandidateWindow ADW = new AddCandidateWindow();
+            ADW.Show();
+        }
+        private void DashBoard_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
         }
     }
 }
