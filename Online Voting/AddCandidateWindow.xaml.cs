@@ -44,7 +44,8 @@ namespace Online_Voting
             {
                 CID = CandidateIDTbox.Text,
                 CName = CandidateNTbox.Text,
-                CVotes = 0
+                CVotes = 0,
+                CRule = CandidateRuleTbox.Text
             };
             client = new FireSharp.FirebaseClient(config);
             response = client.Get(@"CandidateList");
@@ -57,6 +58,7 @@ namespace Online_Voting
                 {
                     CName = entry.Value.CName,
                     CID = entry.Key,
+                    //CRule = entry.Value.CRule,
                 };
                 if(newcandidate.CID == currentCadidates.CID || newcandidate.CName == currentCadidates.CName)
                 {

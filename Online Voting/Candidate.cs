@@ -11,5 +11,6 @@ namespace Online_Voting
         public string CName { get; set; }
         public int CVotes { get; set; }
         public string CID { get; set; }
+        public string CRule { get; set; }
     }
 }

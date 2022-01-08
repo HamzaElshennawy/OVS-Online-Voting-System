@@ -19,7 +19,6 @@ using FireSharp.EventStreaming;
 using FirebaseAdmin.Messaging;
 using Newtonsoft.Json;
 
-
 namespace Online_Voting
 {
     /// <summary>
@@ -43,8 +42,6 @@ namespace Online_Voting
         }
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
         {
-            // Set tooltip visibility
-
             if (Tg_Btn.IsChecked == true)
             {
                 tt_home.Visibility = Visibility.Collapsed;
@@ -168,16 +165,7 @@ namespace Online_Voting
         }
         public void AddCadidate()
         {
-            FirebaseResponse response2;
-            Candidate candidate = new Candidate()
-            {
-                CID = "1234",
-                CName = "Ahmed",
-                CVotes = 0
-            };
-            client = new FireSharp.FirebaseClient(config);
-            response2 = client.Set("CandidateList/" + candidate.CID.ToString(), candidate);
-            MessageBox.Show(response2.Body);
+            
         }
         public bool CheckIfAdmin()
         {

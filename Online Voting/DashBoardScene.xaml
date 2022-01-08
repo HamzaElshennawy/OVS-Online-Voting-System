@@ -226,6 +226,7 @@
                     </LinearGradientBrush>
                 </Grid.Background>
 
+
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -354,6 +355,7 @@
                                                    Color="#FF373535"/>
                         </Button.Effect>
                     </Button>
+                    <ComboBox HorizontalAlignment="Left" Margin="119,142,0,0" Width="211" Height="25"/>
 
 
 

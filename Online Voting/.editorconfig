@@ -37,3 +37,6 @@ dotnet_style_require_accessibility_modifiers = for_non_interface_members:suggest
 
 #prefer methods not to be prefaced with this. or Me. in Visual Basic
 dotnet_style_qualification_for_method = false:suggestion
+
+# TODO: TODO
+dotnet_diagnostic.TODO.severity = warning
