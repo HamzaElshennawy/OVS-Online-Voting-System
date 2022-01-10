@@ -38,39 +38,47 @@ namespace Online_Voting
 
         private void AddBTN_Click(object sender, RoutedEventArgs e)
         {
-            bool exists = false;
-            FirebaseResponse response;
-            Candidate newcandidate = new Candidate()
+            if(string.IsNullOrEmpty(CandidateIDTbox.Text) || string.IsNullOrEmpty(CandidateNTbox.Text) || string.IsNullOrEmpty(CandidateRuleCbox.SelectedValue.ToString()))
             {
-                CID = CandidateIDTbox.Text,
-                CName = CandidateNTbox.Text,
-                CVotes = 0,
-                CRule = CandidateRuleTbox.Text
-            };
-            client = new FireSharp.FirebaseClient(config);
-            response = client.Get(@"CandidateList");
-            Candidate candidate = response.ResultAs<Candidate>();
-            var json = response.Body.ToString();
-            Dictionary<string, Candidate> elist = JsonConvert.DeserializeObject<Dictionary<string, Candidate>>(json);
-            foreach (KeyValuePair<string, Candidate> entry in elist)
-            {
-                Candidate currentCadidates = new Candidate()
-                {
-                    CName = entry.Value.CName,
-                    CID = entry.Key,
-                    //CRule = entry.Value.CRule,
-                };
-                if(newcandidate.CID == currentCadidates.CID || newcandidate.CName == currentCadidates.CName)
-                {
-                    MessageBox.Show("This Candidate already exists!!");
-                    exists = true;
-                    break;
-                }
+                MessageBox.Show("Please fill all boxes.");
             }
-            if(!exists)
+            else
             {
-                response = client.Set("CandidateList/" + newcandidate.CID.ToString(), newcandidate);
-                MessageBox.Show(response.Body, "Candidate Added.");
+                bool exists = false;
+                FirebaseResponse response;
+                Candidate newcandidate = new Candidate()
+                {
+                    CID = CandidateIDTbox.Text,
+                    CName = CandidateNTbox.Text,
+                    CVotes = 0,
+                    CRule = CandidateRuleCbox.SelectedValue.ToString()
+                };
+                client = new FireSharp.FirebaseClient(config);
+                response = client.Get(@"CandidateList");
+                Candidate candidate = response.ResultAs<Candidate>();
+                var json = response.Body.ToString();
+                Dictionary<string, Candidate> elist = JsonConvert.DeserializeObject<Dictionary<string, Candidate>>(json);
+                foreach (KeyValuePair<string, Candidate> entry in elist)
+                {
+                    Candidate currentCadidates = new Candidate()
+                    {
+                        CName = entry.Value.CName,
+                        CID = entry.Key,
+                        CRule = entry.Value.CRule,
+                        CVotes = entry.Value.CVotes
+                    };
+                    if (newcandidate.CID == currentCadidates.CID || newcandidate.CName == currentCadidates.CName)
+                    {
+                        MessageBox.Show("This Candidate already exists!!");
+                        exists = true;
+                        break;
+                    }
+                }
+                if (!exists)
+                {
+                    response = client.Set("CandidateList/" + newcandidate.CID.ToString(), newcandidate);
+                    MessageBox.Show(response.Body, "Candidate Added.");
+                }
             }
         }
 

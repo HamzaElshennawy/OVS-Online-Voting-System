@@ -18,6 +18,9 @@ using FireSharp.Interfaces;
 using FireSharp.EventStreaming;
 using FirebaseAdmin.Messaging;
 using Newtonsoft.Json;
+using System.Numerics;
+
+
 
 namespace Online_Voting
 {
@@ -33,9 +36,17 @@ namespace Online_Voting
             BasePath = "https://onlinevotingsystem-ovs-default-rtdb.europe-west1.firebasedatabase.app/"
         };
         User currentUser;
+        List<string> P_List = new List<string>();//Prisedint list
+        List<string> VP_List = new List<string>();//Vice list
+        List<string> HOA_List = new List<string>();//Head of activeties list
+        List<string> PR_List = new List<string>();//pr list
+        List<string> HOC_List = new List<string>();//head of clubs list
+        List<string> SA_List = new List<string>();//head of social activeties
         public DashBoardScene()
         {
             InitializeComponent();
+            Update_P_CBox();
+            Update_Candidate_Boxs();
             Leaderpn.Visibility = Visibility.Collapsed;
             Votepn.Visibility = Visibility.Collapsed;
             Homepn.Visibility = Visibility.Visible;
@@ -103,10 +114,13 @@ namespace Online_Voting
             }
             if(!CheckIfAdmin())
             {
-                if(CheckForUserIfVoted())
+                if (CheckForUserIfVoted())
+                {
                     MessageBox.Show("Sorry you had voted before", "Waring!!");
+                }
                 else
                 {
+                    
                     Leaderpn.Visibility = Visibility.Collapsed;
                     Votepn.Visibility = Visibility.Visible;
                     Homepn.Visibility = Visibility.Collapsed;
@@ -134,7 +148,6 @@ namespace Online_Voting
             try
             {
                 FirebaseResponse response;
-                var temp = CurrentUserlbl.Content;
                 client = new FireSharp.FirebaseClient(config);
                 response = client.Get(@"CurrentUser");
                 User user = response.ResultAs<User>();
@@ -151,7 +164,7 @@ namespace Online_Voting
                         HadVoted = entry.Value.HadVoted,
                         isAdmin = entry.Value.isAdmin
                     };
-                    if (currentUser.HadVoted)
+                    if (currentUser.HadVoted==true)
                     {
                         return true;
                     }
@@ -162,10 +175,6 @@ namespace Online_Voting
                 MessageBox.Show("Check your internet connection.");
             }
             return false;
-        }
-        public void AddCadidate()
-        {
-            
         }
         public bool CheckIfAdmin()
         {
@@ -209,6 +218,109 @@ namespace Online_Voting
         private void DashBoard_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
+        }
+        public void Update_P_CBox()
+        {
+            List<string> CandidateNamesList = new List<string>();
+            Candidate currentCandidate;
+            try
+            {
+                FirebaseResponse response;
+                client = new FireSharp.FirebaseClient(config);
+                response = client.Get(@"CandidateList");
+                Candidate candidate = response.ResultAs<Candidate>();
+                var json = response.Body.ToString();
+                Dictionary<string, Candidate> elist = JsonConvert.DeserializeObject<Dictionary<string, Candidate>>(json);
+                foreach (KeyValuePair<string, Candidate> entry in elist)
+                {
+                    currentCandidate = new Candidate()
+                    {
+                        CID = entry.Key,
+                        CName = entry.Value.CName,
+                        CRule = entry.Value.CRule,
+                        CVotes = entry.Value.CVotes
+                    };
+                    if (currentCandidate.CRule== "President")
+                    {
+                        CandidateNamesList.Add(currentCandidate.CName);
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Check your internet connection.....");
+            }
+
+            P_CBox.ItemsSource= CandidateNamesList;
+        }
+
+        public void Update_Candidate_Boxs()
+        {
+            
+            Candidate currentCandidate;
+            try
+            {
+                FirebaseResponse response;
+                client = new FireSharp.FirebaseClient(config);
+                response = client.Get(@"CandidateList");
+                Candidate candidate = response.ResultAs<Candidate>();
+                var json = response.Body.ToString();
+                Dictionary<string, Candidate> elist = JsonConvert.DeserializeObject<Dictionary<string, Candidate>>(json);
+                foreach (KeyValuePair<string, Candidate> entry in elist)
+                {
+                    currentCandidate = new Candidate()
+                    {
+                        CID = entry.Key,
+                        CName = entry.Value.CName,
+                        CRule = entry.Value.CRule,
+                        CVotes = entry.Value.CVotes
+                    };
+                    if (currentCandidate.CRule == "President")
+                    {
+                        P_List.Add(currentCandidate.CName);
+                    }
+                    else if (currentCandidate.CRule == "Social activities")
+                    {
+                        SA_List.Add(currentCandidate.CName);
+                    }
+                    else if (currentCandidate.CRule == "PR")
+                    {
+                        PR_List.Add(currentCandidate.CName);
+                    }
+                    else if (currentCandidate.CRule == "Vice Presidint")
+                    {
+                        VP_List.Add(currentCandidate.CName);
+                    }
+                    else if (currentCandidate.CRule == "Head of clubs")
+                    {
+                        HOC_List.Add(currentCandidate.CName);
+                    }
+                    else if (currentCandidate.CRule == "Head of Academics")
+                    {
+                        HOA_List.Add(currentCandidate.CName);
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Check your internet connection.....");
+            }
+
+            P_CBox.ItemsSource = P_List;
+            VP_CBox.ItemsSource = VP_List;
+            SAR_CBox.ItemsSource = SA_List;
+            PR_CBox.ItemsSource = PR_List;
+            HOC_CBox.ItemsSource = HOC_List;
+            HOA_CBox.ItemsSource = HOA_List;
+        }
+        private void SAR_CBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
+
+        private void P_CBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Update_P_CBox();
         }
     }
 }

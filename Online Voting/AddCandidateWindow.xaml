@@ -13,8 +13,16 @@
         <TextBox x:Name="CandidateIDTbox" HorizontalAlignment="Left" Margin="217,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" Height="30" FontSize="18"/>
         <Label x:Name="CadidateNlbl" Content="Cadidate Name" HorizontalAlignment="Left" Margin="38,132,0,0" VerticalAlignment="Top" Width="149" Height="38" FontSize="18"/>
         <Label x:Name="CadidateIDlbl" Content="Cadidate ID" HorizontalAlignment="Left" Margin="38,179,0,0" VerticalAlignment="Top" Width="149" Height="35" FontSize="18"/>
-        <TextBox x:Name="CandidateRuleTbox" HorizontalAlignment="Left" Margin="217,221,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" Height="30" FontSize="18"/>
         <Label x:Name="CandidateRolelbl" Content="Cadidate Rule" HorizontalAlignment="Left" Margin="38,219,0,0" VerticalAlignment="Top" Width="149" Height="35" FontSize="18"/>
+        <ComboBox x:Name="CandidateRuleCbox" SelectedValuePath="Content" SelectedValue="{Binding ComoSelectedValue}" HorizontalAlignment="Left" Margin="217,226,0,0" VerticalAlignment="Top" Width="211" Height="30">
+            <ComboBoxItem Content="President" FontSize="18" IsSelected="True"/>
+            <ComboBoxItem Content="Social activities" FontSize="18"/>
+            <ComboBoxItem Content="PR" FontSize="18"/>
+            <ComboBoxItem Content="Vice Presidint" FontSize="18"/>
+            <ComboBoxItem Content="Head of clubs" FontSize="18"/>
+            <ComboBoxItem Content="Head of Academics" FontSize="18"/>
+            
+        </ComboBox>
 
     </Grid>
 </Window>

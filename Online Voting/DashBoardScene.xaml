@@ -355,7 +355,111 @@
                                                    Color="#FF373535"/>
                         </Button.Effect>
                     </Button>
-                    <ComboBox HorizontalAlignment="Left" Margin="119,142,0,0" Width="211" Height="25"/>
+                    <Label Content="Presidint Role" Width="200" FontSize="18" Foreground="#FFB38787" HorizontalAlignment="Left" Margin="110,100,0,0"/>
+                    <ComboBox x:Name="P_CBox" SelectedValuePath="Content" 
+                              SelectedValue="{Binding ComoSelectedValue}" 
+                              HorizontalAlignment="Left" Margin="110,10,0,0" 
+                              Width="211" Height="30" FontSize="18" SelectionChanged="P_CBox_SelectionChanged" BorderBrush="#FF312828" OpacityMask="#FF312828"  >
+                        <ComboBox.Background>
+                            <LinearGradientBrush EndPoint="0,1">
+                                
+                                <GradientStop Color="#FF312828" Offset="0"/>
+                            </LinearGradientBrush>
+                        </ComboBox.Background>
+                    </ComboBox>
+                    <Label Content="Social activities Role" Width="200" FontSize="18" Foreground="#FFB38787" Margin="0,-70,0,0" Height="36" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                    <ComboBox x:Name="SAR_CBox" SelectedValuePath="Content" 
+                        SelectedValue="{Binding ComoSelectedValue}" 
+                        Width="211" Height="30" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-30,0,0" SelectionChanged="SAR_CBox_SelectionChanged" >
+                        <ComboBox.Background>
+                            <LinearGradientBrush EndPoint="0,1">
+                                <GradientStop Color="#FFF0F0F0"/>
+                                <GradientStop Color="#FF312828" Offset="1"/>
+                            </LinearGradientBrush>
+                        </ComboBox.Background>
+                    </ComboBox>
+                    <Label Content="PR Role" Width="200" FontSize="18" Foreground="#FFB38787" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="500,-70,0,0"/>
+                    <ComboBox x:Name="PR_CBox" SelectedValuePath="Content" 
+                        SelectedValue="{Binding ComoSelectedValue}" 
+                        Width="211" Height="30" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="520,-30,0,0" >
+                        <ComboBox.Background>
+                            <LinearGradientBrush EndPoint="0,1">
+                                <GradientStop Color="#FFF0F0F0"/>
+                                <GradientStop Color="#FF312828" Offset="1"/>
+                            </LinearGradientBrush>
+                        </ComboBox.Background>
+                    </ComboBox>
+                    <Label Content="Vice Presidint Role" Width="200" FontSize="18" Foreground="#FFB38787" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="110,50,0,0"/>
+                    <ComboBox x:Name="VP_CBox" SelectedValuePath="Content" 
+                        SelectedValue="{Binding ComoSelectedValue}" 
+                        Width="211" Height="30" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="110,0,0,0" >
+                        <ComboBox.Background>
+                            <LinearGradientBrush EndPoint="0,1">
+                                <GradientStop Color="#FFF0F0F0"/>
+                                <GradientStop Color="#FF312828" Offset="1"/>
+                            </LinearGradientBrush>
+                        </ComboBox.Background>
+                    </ComboBox>
+                    <Label Content="Head of clubs Role" Width="200" FontSize="18" Foreground="#FFB38787" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-90,0,0"/>
+                    <ComboBox x:Name="HOC_CBox" SelectedValuePath="Content" 
+                        SelectedValue="{Binding ComoSelectedValue}" 
+                        Width="211" Height="30" FontSize="18" HorizontalAlignment="Center" Margin="0,-30,0,0" >
+                        <ComboBox.Background>
+                            <LinearGradientBrush EndPoint="0,1">
+                                <GradientStop Color="#FFF0F0F0"/>
+                                <GradientStop Color="#FF312828" Offset="1"/>
+                            </LinearGradientBrush>
+                        </ComboBox.Background>
+                    </ComboBox>
+                    <Label Content="Head of Academics Role" Width="200" FontSize="18" Foreground="#FFB38787" HorizontalAlignment="Right" Margin="0,-90,125,0" Height="34"/>
+                    <ComboBox x:Name="HOA_CBox" SelectedValuePath="Content" 
+                        SelectedValue="{Binding ComoSelectedValue}" 
+                        Width="211" Height="30" FontSize="18" 
+                              HorizontalAlignment="Right" Margin="0,-29.7,115,0" >
+                        <ComboBox.Background>
+                            <LinearGradientBrush EndPoint="0,1">
+                                <GradientStop Color="#FFF0F0F0"/>
+                                <GradientStop Color="#FF312828" Offset="1"/>
+                            </LinearGradientBrush>
+                        </ComboBox.Background>
+                    </ComboBox>
+                    <Button x:Name="SubmiteVoteBTN" Height="38" 
+                            Width="188" HorizontalAlignment="Right" Margin="0,180,42,0" Content="Submit Vote" FontSize="20" FontFamily="Cascadia Code ExtraLight">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="20"/>
+                            </Style>
+
+
+                        </Button.Resources>
+                        <Button.Style>
+
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#FF373535"/>
+
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FF292827"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Effect>
+                            <DropShadowEffect  BlurRadius="10"
+                                                   ShadowDepth="1"
+                                                   Direction="-90"
+                                                   Color="#FF373535"/>
+                        </Button.Effect>
+                    </Button>
 
 
 
