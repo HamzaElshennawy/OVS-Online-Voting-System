@@ -64,6 +64,9 @@ namespace Online_Voting
                 client = new FireSharp.FirebaseClient(config);
                 var setter = client.Set("UserList/" + tempUser.UID, tempUser);
                 MessageBox.Show("Successfuly Registered.");
+                MainWindow main = new MainWindow();
+                main.Show();
+                this.Close();
             }
             else { MessageBox.Show("This account already registered."); }
         }

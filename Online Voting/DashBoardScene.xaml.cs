@@ -97,12 +97,14 @@ namespace Online_Voting
 
         private void homeBTN_Click(object sender, RoutedEventArgs e)
         {
-            
+            GoToHomepn();
+        }
+        public void GoToHomepn()
+        {
             Leaderpn.Visibility = Visibility.Collapsed;
             Votepn.Visibility = Visibility.Collapsed;
             Homepn.Visibility = Visibility.Visible;
         }
-
         
         private void VoteBTN_Click(object sender, RoutedEventArgs e)
         {
@@ -114,17 +116,17 @@ namespace Online_Voting
             }
             if(!CheckIfAdmin())
             {
+                Leaderpn.Visibility = Visibility.Collapsed;
+                Votepn.Visibility = Visibility.Visible;
+                Homepn.Visibility = Visibility.Collapsed;
+                AddCadidateBTN.Visibility = Visibility.Collapsed;
                 if (CheckForUserIfVoted())
                 {
-                    MessageBox.Show("Sorry you had voted before", "Waring!!");
+                    SubmiteVoteBTN.Visibility = Visibility.Collapsed;
                 }
                 else
                 {
-                    
-                    Leaderpn.Visibility = Visibility.Collapsed;
-                    Votepn.Visibility = Visibility.Visible;
-                    Homepn.Visibility = Visibility.Collapsed;
-                    AddCadidateBTN.Visibility = Visibility.Collapsed;
+                    SubmiteVoteBTN.Visibility = Visibility.Visible;
                 }
             }
         }
@@ -313,14 +315,73 @@ namespace Online_Voting
             HOC_CBox.ItemsSource = HOC_List;
             HOA_CBox.ItemsSource = HOA_List;
         }
-        private void SAR_CBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
-        }
-
         private void P_CBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Update_P_CBox();
+        }
+
+        private void SubmiteVoteBTN_Click(object sender, RoutedEventArgs e)
+        {
+            FirebaseResponse response;
+            client = new FireSharp.FirebaseClient(config);
+            //MessageBox.Show(P_CBox.SelectedValue.ToString());
+            if (P_CBox.SelectedIndex == -1 || VP_CBox.SelectedIndex == -1 || SAR_CBox.SelectedIndex == -1 || PR_CBox.SelectedIndex == -1 || HOC_CBox.SelectedIndex == -1 || HOA_CBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("You did not select all the roles");
+            }
+            else
+            {
+                MessageBox.Show(currentUser.UName);
+                Candidate currentCandidate;
+                response = client.Get(@"CandidateList");
+                Candidate candidate = response.ResultAs<Candidate>();
+                var json = response.Body.ToString();
+                Dictionary<string, Candidate> elist = JsonConvert.DeserializeObject<Dictionary<string, Candidate>>(json);
+                foreach (KeyValuePair<string, Candidate> entry in elist)
+                {
+                    currentCandidate = new Candidate()
+                    {
+                        CID = entry.Key,
+                        CName = entry.Value.CName,
+                        CRule = entry.Value.CRule,
+                        CVotes = entry.Value.CVotes
+                    };
+                    if (currentCandidate.CName == P_CBox.SelectedItem.ToString())
+                    {
+                        currentCandidate.CVotes += 1;
+                        response = client.Update("CandidateList/" + currentCandidate.CID, currentCandidate);
+                    }
+                    if (currentCandidate.CName == VP_CBox.SelectedItem.ToString())
+                    {
+                        currentCandidate.CVotes += 1;
+                        response = client.Update("CandidateList/" + currentCandidate.CID, currentCandidate);
+                    }
+                    if (currentCandidate.CName == SAR_CBox.SelectedItem.ToString())
+                    {
+                        currentCandidate.CVotes += 1;
+                        response = client.Update("CandidateList/" + currentCandidate.CID, currentCandidate);
+                    }
+                    if (currentCandidate.CName == PR_CBox.SelectedItem.ToString())
+                    {
+                        currentCandidate.CVotes += 1;
+                        response = client.Update("CandidateList/" + currentCandidate.CID, currentCandidate);
+                    }
+                    if (currentCandidate.CName == HOC_CBox.SelectedItem.ToString())
+                    {
+                        currentCandidate.CVotes += 1;
+                        response = client.Update("CandidateList/" + currentCandidate.CID, currentCandidate);
+                    }
+                    if (currentCandidate.CName == HOA_CBox.SelectedItem.ToString())
+                    {
+                        currentCandidate.CVotes += 1;
+                        response = client.Update("CandidateList/" + currentCandidate.CID, currentCandidate);
+                    }
+                }
+                currentUser.HadVoted = true;
+                response = client.Update("UserList/" + currentUser.UID, currentUser);
+                response = client.Update("CurrentUser/" + currentUser.UID, currentUser);
+                GoToHomepn();
+            }
         }
     }
 }
