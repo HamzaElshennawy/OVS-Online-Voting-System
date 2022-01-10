@@ -310,9 +310,7 @@
                         </TextBlock.Effect>
                     </TextBlock>
 
-                    <!--<Image x:Name="Leader_Photo" 
-                   Height="329" Width="364" 
-                   Source="/leader.png" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Margin="0,-300,50,0"/>-->
+                    
                 </StackPanel>
                 <StackPanel x:Name="Votepn" Margin="68,0,0,-2" Visibility="Visible" Grid.RowSpan="2" Grid.Row="1" Grid.ColumnSpan="2">
                     <Button Height="44" Width="204"
