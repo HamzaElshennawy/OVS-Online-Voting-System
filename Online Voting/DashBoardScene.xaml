@@ -310,9 +310,9 @@
                         </TextBlock.Effect>
                     </TextBlock>
 
-                    
+
                 </StackPanel>
-                <StackPanel x:Name="Votepn" Margin="68,0,0,-2" Visibility="Visible" Grid.RowSpan="2" Grid.Row="1" Grid.ColumnSpan="2">
+                <StackPanel x:Name="Votepn" Margin="68,0,0,-2" Visibility="Hidden" Grid.RowSpan="2" Grid.Row="1" Grid.ColumnSpan="2">
                     <Button Height="44" Width="204"
                             x:Name="AddCadidateBTN"
                             Content="Add Cadidate" FontSize="25" FontFamily="Cascadia Code ExtraLight"
@@ -364,7 +364,7 @@
                               BorderBrush="#FF312828" OpacityMask="#FF312828"  >
                         <ComboBox.Background>
                             <LinearGradientBrush EndPoint="0,1">
-                                
+
                                 <GradientStop Color="#FF312828" Offset="0"/>
                             </LinearGradientBrush>
                         </ComboBox.Background>
@@ -491,8 +491,8 @@
 
 
                 </StackPanel>
-                <StackPanel x:Name="Leaderpn" Margin="68,40,0,0" Visibility="Hidden">
-                    <Button x:Name="test3btn" Width="124" Height="50" Background="Blue" Content="Leaderboard scene" Foreground="White"/>
+                <StackPanel x:Name="Leaderpn" Margin="68,10,0,0" Visibility="Visible" Grid.RowSpan="2" Grid.Row="1" Grid.ColumnSpan="2">
+                    
                 </StackPanel>
                 <Label x:Name="CurrentUserlbl" HorizontalAlignment="Left" Margin="851,0,0,0" VerticalAlignment="Center" Width="154" Grid.ColumnSpan="2" FontSize="15" FontFamily="Cascadia Mono Light"/>
             </Grid>

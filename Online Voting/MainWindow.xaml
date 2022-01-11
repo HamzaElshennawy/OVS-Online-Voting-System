@@ -101,10 +101,7 @@
                                                    Direction="-90"
                                                    Color="White"/>
             </Button.Effect>
-
         </Button>
-
-
         <Button x:Name="LoginBTN"
                 Content="Login"
                 Click="LoginBTN_Click" 
@@ -115,9 +112,6 @@
                 Foreground="Wheat" FontSize="25" 
                 HorizontalContentAlignment="Center" 
                 FontFamily="Cascadia Mono ExtraLight">
-
-
-
             <Button.Style>
 
                 <Style TargetType="Button">
@@ -178,9 +172,6 @@
                     </Style.Triggers>
                 </Style>
             </Button.Style>
-
-
-
         </Button>
         <Label Content="Online Voting System" 
             HorizontalAlignment="Left" 
@@ -201,10 +192,5 @@
             Height="116" Margin="470,111,0,0" 
             VerticalAlignment="Top" Width="191" 
             Source="/ovsAsset 2mdpi.png"/>
-
-
-
     </Grid>
-
-
 </Window>

@@ -163,9 +163,7 @@
                                                    ShadowDepth="1"
                                                    Direction="-90"
                                                    Color="#FF373535"/>
-
             </TextBox.Effect>
-
         </TextBox>
         <Label x:Name="Emailbl" Content="E-Mail" HorizontalAlignment="Left" Margin="323,299,0,0" VerticalAlignment="Top" Width="86" Height="32" FontFamily="Cascadia Code SemiLight" FontSize="20">
             <Label.Effect>
@@ -200,10 +198,5 @@
             </Label.Effect>
         </Label>
         <Label x:Name="Incorrectlbl" Content="Incorrect username or password" HorizontalAlignment="Left" Margin="490,268,0,305" Width="242" Foreground="#FFA50C0C" FontFamily="Cascadia Code ExtraLight"/>
-
-
-
-
-
     </Grid>
 </Window>

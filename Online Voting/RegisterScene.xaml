@@ -145,7 +145,7 @@
                 <Image Source="/Close_icon.png" Height="30" Width="36" />
 
             </StackPanel>
-            
+
 
         </Button>
 
@@ -240,10 +240,5 @@
                                                    Color="White"/>
             </Label.Effect>
         </Label>
-
-
-
-
-
     </Grid>
 </Window>
