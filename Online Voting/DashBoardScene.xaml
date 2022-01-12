@@ -492,7 +492,37 @@
 
                 </StackPanel>
                 <StackPanel x:Name="Leaderpn" Margin="68,10,0,0" Visibility="Visible" Grid.RowSpan="2" Grid.Row="1" Grid.ColumnSpan="2">
-                    
+                    <Label Content="President Role" Width="196" FontSize="20" 
+                           FontFamily="Cascadia Code ExtraLight" 
+                           HorizontalAlignment="Left" 
+                           VerticalAlignment="Center" 
+                           Margin="100,90,0,0"/>
+                    <TextBlock x:Name="LeaderP_TB" Width="248" Height="60"
+                               HorizontalAlignment="Left" 
+                           Margin="100,6,0,0"><Run Text="1-Hamza"/><LineBreak/><Run Text="2-Akram"/><LineBreak/><Run Text="3-Mahmoud"/></TextBlock>
+                    <Label Content="Social activities Role" Width="196" FontSize="20" FontFamily="Cascadia Code ExtraLight" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="-50,-169,0,0"/>
+                    <TextBlock x:Name="LeaderSA_TB" Width="270" Height="60"
+                               HorizontalAlignment="Left" 
+                           Margin="353,-61,0,0"></TextBlock>
+                    <Label Content="PR Role" Width="196" FontSize="20" 
+                           FontFamily="Cascadia Code ExtraLight" HorizontalAlignment="Right" 
+                           Margin="0,-165,130,0" Height="36"/>
+                    <TextBlock x:Name="LeaderPR_TB" Width="270" Height="60" HorizontalAlignment="Right" VerticalAlignment="Center"
+                              Margin="0,-61,55,0" />
+                    <Label Content="Vice President Role" Width="196" FontSize="20" 
+                           FontFamily="Cascadia Code ExtraLight" 
+                           HorizontalAlignment="Left" Margin="100,50,0,0"/>
+                    <Label Content="Head of clubs Role" Width="196" FontSize="20" FontFamily="Cascadia Code ExtraLight" HorizontalAlignment="Left" Margin="353,-35,0,0"/>
+                    <Label Content="Head of Academics Role" 
+                           Width="196" FontSize="20" 
+                           FontFamily="Cascadia Code ExtraLight" 
+                           HorizontalAlignment="Right" Margin="0,-35,130,0"/>
+                    <TextBlock x:Name="LeaderVP_TB" Width="248" Height="60" HorizontalAlignment="Left" Margin="100,0,0,0"
+                               ><Run Text="1-Hamza"/><LineBreak/><Run Text="2-Akram"/><LineBreak/><Run Text="3-Mahmoud"/></TextBlock>
+                    <TextBlock x:Name="LeaderHOC_TB" Width="270" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30,-60,0,0"
+                               />
+                    <TextBlock x:Name="LeaderHOA_TB" Width="270" Height="60" HorizontalAlignment="Right" Margin="0,-60,50,0" />
+
                 </StackPanel>
                 <Label x:Name="CurrentUserlbl" HorizontalAlignment="Left" Margin="851,0,0,0" VerticalAlignment="Center" Width="154" Grid.ColumnSpan="2" FontSize="15" FontFamily="Cascadia Mono Light"/>
             </Grid>
