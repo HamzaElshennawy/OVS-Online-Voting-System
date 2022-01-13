@@ -139,6 +139,10 @@ namespace Online_Voting
             Homepn.Visibility = Visibility.Collapsed;
             GetLeaderOf_P_Role();
             GetLeaderOf_VP_Role();
+            GetLeaderOf_HOA_Role();
+            GetLeaderOf_SA_Role();
+            GetLeaderOf_HOC_Role();
+            GetLeaderOf_PR_Role();
         }
 
         private void signoutBTN_Click(object sender, RoutedEventArgs e)
@@ -451,19 +455,131 @@ namespace Online_Voting
         }
         public void GetLeaderOf_HOA_Role()
         {
+            Candidate currentCandidate;
 
+            Dictionary<string, int> LeaderOfHOA_Role = new Dictionary<string, int>();
+            List<Candidate> tempCandidate = new List<Candidate>();
+
+            FirebaseResponse response;
+            client = new FireSharp.FirebaseClient(config);
+            response = client.Get(@"CandidateList");
+            Candidate candidate = response.ResultAs<Candidate>();
+            var json = response.Body.ToString();
+            Dictionary<string, Candidate> elist = JsonConvert.DeserializeObject<Dictionary<string, Candidate>>(json);
+            foreach (KeyValuePair<string, Candidate> entry in elist)
+            {
+                currentCandidate = new Candidate()
+                {
+                    CID = entry.Key,
+                    CName = entry.Value.CName,
+                    CRule = entry.Value.CRule,
+                    CVotes = entry.Value.CVotes
+                };
+                if (currentCandidate.CRule == "Head of Academics")
+                {
+                    LeaderOfHOA_Role.Add(currentCandidate.CName, currentCandidate.CVotes);
+                }
+            }
+            var sortedDict = from entry in LeaderOfHOA_Role orderby entry.Value descending select entry;
+            LeaderHOA_TB.Text = sortedDict.ElementAt(0).Key + "       " + sortedDict.ElementAt(0).Value + "\n" +
+                sortedDict.ElementAt(1).Key + "     " + sortedDict.ElementAt(1).Value + "\n" +
+                sortedDict.ElementAt(2).Key + "      " + sortedDict.ElementAt(2).Value;
         }
         public void GetLeaderOf_SA_Role()
         {
+            Candidate currentCandidate;
 
+            Dictionary<string, int> LeaderOfSA_Role = new Dictionary<string, int>();
+            List<Candidate> tempCandidate = new List<Candidate>();
+
+            FirebaseResponse response;
+            client = new FireSharp.FirebaseClient(config);
+            response = client.Get(@"CandidateList");
+            Candidate candidate = response.ResultAs<Candidate>();
+            var json = response.Body.ToString();
+            Dictionary<string, Candidate> elist = JsonConvert.DeserializeObject<Dictionary<string, Candidate>>(json);
+            foreach (KeyValuePair<string, Candidate> entry in elist)
+            {
+                currentCandidate = new Candidate()
+                {
+                    CID = entry.Key,
+                    CName = entry.Value.CName,
+                    CRule = entry.Value.CRule,
+                    CVotes = entry.Value.CVotes
+                };
+                if (currentCandidate.CRule == "Social activities")
+                {
+                    LeaderOfSA_Role.Add(currentCandidate.CName, currentCandidate.CVotes);
+                }
+            }
+            var sortedDict = from entry in LeaderOfSA_Role orderby entry.Value descending select entry;
+            LeaderSA_TB.Text = sortedDict.ElementAt(0).Key + "       " + sortedDict.ElementAt(0).Value + "\n" +
+                sortedDict.ElementAt(1).Key + "     " + sortedDict.ElementAt(1).Value + "\n" +
+                sortedDict.ElementAt(2).Key + "      " + sortedDict.ElementAt(2).Value;
         }
         public void GetLeaderOf_HOC_Role()
         {
+            Candidate currentCandidate;
 
+            Dictionary<string, int> LeaderOfHOC_Role = new Dictionary<string, int>();
+            List<Candidate> tempCandidate = new List<Candidate>();
+
+            FirebaseResponse response;
+            client = new FireSharp.FirebaseClient(config);
+            response = client.Get(@"CandidateList");
+            Candidate candidate = response.ResultAs<Candidate>();
+            var json = response.Body.ToString();
+            Dictionary<string, Candidate> elist = JsonConvert.DeserializeObject<Dictionary<string, Candidate>>(json);
+            foreach (KeyValuePair<string, Candidate> entry in elist)
+            {
+                currentCandidate = new Candidate()
+                {
+                    CID = entry.Key,
+                    CName = entry.Value.CName,
+                    CRule = entry.Value.CRule,
+                    CVotes = entry.Value.CVotes
+                };
+                if (currentCandidate.CRule == "Head of clubs")
+                {
+                    LeaderOfHOC_Role.Add(currentCandidate.CName, currentCandidate.CVotes);
+                }
+            }
+            var sortedDict = from entry in LeaderOfHOC_Role orderby entry.Value descending select entry;
+            LeaderHOC_TB.Text = sortedDict.ElementAt(0).Key + "       " + sortedDict.ElementAt(0).Value + "\n" +
+                sortedDict.ElementAt(1).Key + "     " + sortedDict.ElementAt(1).Value + "\n" +
+                sortedDict.ElementAt(2).Key + "      " + sortedDict.ElementAt(2).Value;
         }
         public void GetLeaderOf_PR_Role()
         {
+            Candidate currentCandidate;
 
+            Dictionary<string, int> LeaderOfPR_Role = new Dictionary<string, int>();
+            List<Candidate> tempCandidate = new List<Candidate>();
+
+            FirebaseResponse response;
+            client = new FireSharp.FirebaseClient(config);
+            response = client.Get(@"CandidateList");
+            Candidate candidate = response.ResultAs<Candidate>();
+            var json = response.Body.ToString();
+            Dictionary<string, Candidate> elist = JsonConvert.DeserializeObject<Dictionary<string, Candidate>>(json);
+            foreach (KeyValuePair<string, Candidate> entry in elist)
+            {
+                currentCandidate = new Candidate()
+                {
+                    CID = entry.Key,
+                    CName = entry.Value.CName,
+                    CRule = entry.Value.CRule,
+                    CVotes = entry.Value.CVotes
+                };
+                if (currentCandidate.CRule == "PR")
+                {
+                    LeaderOfPR_Role.Add(currentCandidate.CName, currentCandidate.CVotes);
+                }
+            }
+            var sortedDict = from entry in LeaderOfPR_Role orderby entry.Value descending select entry;
+            LeaderPR_TB.Text = sortedDict.ElementAt(0).Key + "       " + sortedDict.ElementAt(0).Value + "\n" +
+                sortedDict.ElementAt(1).Key + "     " + sortedDict.ElementAt(1).Value + "\n" +
+                sortedDict.ElementAt(2).Key + "      " + sortedDict.ElementAt(2).Value;
         }
 
     }
