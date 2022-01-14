@@ -499,7 +499,7 @@
                            Margin="90,90,0,0"/>
                     <TextBlock x:Name="LeaderP_TB" Width="248" Height="60"
                                HorizontalAlignment="Left" 
-                           Margin="100,6,0,0"><Run Text="1-Hamza"/><LineBreak/><Run Text="2-Akram"/><LineBreak/><Run Text="3-Mahmoud"/></TextBlock>
+                           Margin="100,6,0,0"></TextBlock>
                     <Label Content="Social activities Role" Width="196" FontSize="20" FontFamily="Cascadia Code ExtraLight" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="-60,-169,0,0"/>
                     <TextBlock x:Name="LeaderSA_TB" Width="270" Height="60"
                                HorizontalAlignment="Left" 
@@ -518,7 +518,7 @@
                            FontFamily="Cascadia Code ExtraLight" 
                            HorizontalAlignment="Right" Margin="0,-35,140,0"/>
                     <TextBlock x:Name="LeaderVP_TB" Width="248" Height="60" HorizontalAlignment="Left" Margin="100,0,0,0"
-                               ><Run Text="1-Hamza"/><LineBreak/><Run Text="2-Akram"/><LineBreak/><Run Text="3-Mahmoud"/></TextBlock>
+                               ></TextBlock>
                     <TextBlock x:Name="LeaderHOC_TB" Width="270" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30,-60,0,0"
                                />
                     <TextBlock x:Name="LeaderHOA_TB" Width="270" Height="60" HorizontalAlignment="Right" Margin="0,-60,50,0" />
